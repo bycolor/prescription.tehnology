@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Slide Menu</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/slidemenu.css" media="screen" />
+		
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	</head>
+	<body>
+		<div id="holder-languages">
+			<a href="#" class="language-flag english">&nbsp;</a>
+			<a href="#" class="language-flag german">&nbsp;</a>
+			<a href="#" class="language-flag dutch">&nbsp;</a>
+			<a href="#" class="language-flag french">&nbsp;</a>
+			<a href="#" class="language-flag spanish">&nbsp;</a>
+		</div>
+		<div id="holder-account-info">
+			<h1 id="account-name"></h1>
+		</div>
+		<div id="holder-shopping-cart">
+			<h2 id="ordered-items">Ordered items</h2>
+			<ul class="shopping-cart-responsive">
+				<li></li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				var $shoppingCart = $('#shopping-cart');
+				$('#link-shopping-cart').on('click', function(e) {
+					$shoppingCart.hide().html('cart dispatched').fadeIn();
+				})
+			})
+		</script>
+	</body>
+</html>
