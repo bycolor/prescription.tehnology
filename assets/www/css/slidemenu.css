@@ -1,0 +1,10 @@
+body {
+	width: 100%;
+	background: #005982;
+	color: #fff;
+	height: 10000px;
+	overflow: hidden;
+}
+	#link-shopping-cart {
+		color: #fff;
+	}
