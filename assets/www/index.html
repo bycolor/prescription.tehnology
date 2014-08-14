@@ -32,7 +32,9 @@
 
 		<div class="container wrap">
 			<h1>Order Form</h1>
-			<form id="login-form" action="" method="post" class="row gutters">
+			<form id="login-form" action="https://prescription.technology/___include/ajax/ajax.regcust.asp" method="post" class="row gutters">
+				<input type="hidden" id="m" name="m" value="0" />
+				<input type="hidden" id="j" name="j" value="1" />
 				<div class="col span_24">
 					<input type="text" id="login-user" name="login-user" value="" placeholder="Enter your username" />
 					<input type="password" id="login-pass" name="login-pass" value="" placeholder="Enter your username" />
@@ -63,14 +65,15 @@
 				//$myxml.text(xmlToSend);
 				
 				$loginSubmit.on('touchstart click', function(e) {
+					e.preventDefault();
 					// HTTP request plugin for Phonegap / Cordova
 					// https://github.com/bperin/HttpRequest
-					var email = $('#u').val();
+					var email = $('#login-user').val();
 					var params = {
 						'm': $('#m').val(),
 						'j': $('#j').val(),
-						'u': email,
-						'p': $('#p').val(),
+						'loginemail': email,
+						'loginpassword': $('#login-pass').val(),
 						'myxml': xmlToSend
 					};
 
