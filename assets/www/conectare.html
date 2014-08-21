@@ -52,6 +52,7 @@
 				var $responseHolder = $('#response-holder');
 				var $responseHolderNoData = $('#response-holder-nodata');
 				var $responseHolderNotLogged = $('#response-holder-notlogged');
+				var $loginUser = $('#login-user');
 				//var $myxml = $('#myxml');
 				var xmlToSend = '<root>'
 									+ '<regId>regid1</regId>'
@@ -66,7 +67,7 @@
 					e.preventDefault();
 					// HTTP request plugin for Phonegap / Cordova
 					// https://github.com/bperin/HttpRequest
-					var email = $('#login-user').val();
+					var email = $loginUser.val();
 					var params = {
 						'm': $('#m').val(),
 						'j': $('#j').val(),
