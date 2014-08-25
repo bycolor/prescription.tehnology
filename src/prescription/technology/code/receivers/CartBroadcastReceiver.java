@@ -16,7 +16,8 @@ public class CartBroadcastReceiver extends BroadcastReceiver {
     public CustomCordovaWebView cartView;
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    /*
+	public void onReceive(Context context, Intent intent) {
         if (intent.getAction() == "CART") {
             Index activity = (Index) context;
             cartView = (CustomCordovaWebView) activity.NavigationDrawerViews.get("CART");
@@ -26,6 +27,27 @@ public class CartBroadcastReceiver extends BroadcastReceiver {
                 activity.mDrawerLayout.openDrawer(Gravity.LEFT);
             } else
                 Log.v(TAG, "cartView is not set");
+        }
+    }
+	*/
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getAction() == "CART") {
+            Index activity = (Index) context;
+            cartView = (CustomCordovaWebView) activity.NavigationDrawerViews.get("CART");
+            if (cartView != null) {
+                Log.v(TAG, "send javascript");
+                activity.mDrawerLayout.openDrawer(Gravity.LEFT);
+            } else {
+                Log.v(TAG, "cartView is not set");
+			}
+		} else if (intent.getAction() == "LOGGEDIN") {
+            Index activity = (Index) context;
+            cartView = (CustomCordovaWebView) activity.NavigationDrawerViews.get("CART");
+            if (cartView != null) {
+                cartView.sendJavascript("var event = new CustomEvent('LOGGEDIN', {'detail':{'test':true}});document.dispatchEvent(event);");
+            } else {
+                Log.v(TAG, "cartView is not set");
+			}
         }
     }
 }

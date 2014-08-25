@@ -53,7 +53,7 @@ public class Adapter extends ArrayAdapter<Item> {
 
     public View getViewById(String Id) {
         int position = 0;
-        for (int i = 0; i < getCount(); i++) {
+        for (int i = 0; i < getCount();) {
             if (getItem(i).Id == Id)
                 position = i;
             break;

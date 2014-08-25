@@ -95,7 +95,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
         for (String key : broadcastReceiverHashMap.keySet()) {
             registerReceiver(broadcastReceiverHashMap.get(key), new IntentFilter(key));
         }
-        mDrawerLayout.openDrawer(Gravity.LEFT);
+        //mDrawerLayout.openDrawer(Gravity.LEFT);
     }
 
     @Override

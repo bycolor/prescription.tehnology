@@ -21,7 +21,7 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appView.loadUrl("file:///android_asset/www/index.html");
+        appView.loadUrl("file:///android_asset/www/conectare.html");
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);

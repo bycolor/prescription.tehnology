@@ -11,6 +11,7 @@
 		
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/custom.jquery.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic" rel="stylesheet" type="text/css" />
 	</head>
 	<body id="slidemenu">
@@ -22,22 +23,56 @@
 			<a href="#" class="language-flag spanish">&nbsp;</a>
 		</div>
 		<div id="holder-account-info">
-			<h1 id="account-name">Bogdan Georgescu</h1>
+			<h1 class="autoupdate" id="username"></h1>
 		</div>
 		<div id="holder-shopping-cart">
 			<h2 id="ordered-items">Ordered items</h2>
+			<button id="temp">Manually pull userdata<button>
 			<ul class="shopping-cart-responsive">
 				<li></li>
 			</ul>
 		</div>
 		
 		<script type="text/javascript">
-			$(function(){
+			function PowerUp() {
+				var oLocalStorage = new classLocalStorage();
 				var $shoppingCart = $('#shopping-cart');
+
+				function UpdateInfo() {
+					$('.autoupdate').each(function() {
+						//var $this = $(this);
+						$('#' + this.id).hide().html(oLocalStorage[this.id]).show();
+					})
+				}
+				
+				document.addEventListener("LOGGEDIN", function(e) { 
+					alert('LOGGEDIN event fired, now lets start populate slidemenu');
+					if (oLocalStorage.GetLoggedData()) {
+						UpdateInfo();
+						alert('oLocalStorage.username: ' + oLocalStorage.username);
+					} else {
+						alert('Nu user data to get from local storage!');
+					}
+				});
+				
+				$('#temp').on('touchstart click', function(e) {
+					e.preventDefault();
+					if (oLocalStorage.GetLoggedData()) {
+						UpdateInfo();
+						alert('oLocalStorage.username: ' + oLocalStorage.username);
+					} else {
+						alert('Nu user data to get from local storage!');
+					}
+				});
+				
 				$('#link-shopping-cart').on('click', function(e) {
 					$shoppingCart.hide().html('cart dispatched').fadeIn();
 				})
-			})
+			};
+			
+			$(function() {
+				document.addEventListener("deviceready", PowerUp, true);       
+			});
 		</script>
 	</body>
 </html>

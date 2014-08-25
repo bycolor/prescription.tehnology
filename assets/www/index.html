@@ -29,115 +29,75 @@
 		</div>
 
 		<div class="container wrap">
-			<h1>Order Form</h1>
-			<form id="login-form" action="https://prescription.technology/___include/ajax/ajax.regcust.asp" method="post" class="row gutters">
-				<input type="hidden" id="m" name="m" value="0" />
-				<input type="hidden" id="j" name="j" value="1" />
-				<div class="col span_24">
-					<input type="text" id="login-user" name="login-user" value="" placeholder="Enter your username" />
-					<input type="password" id="login-pass" name="login-pass" value="" placeholder="Enter your username" />
-					<button type="submit" class="btn btn-big has-icon" id="login-submit"><div class="btn-text">Sign in</div><div class="btn-icon"><i class="fa fa-angle-double-right"></i></div></button>
-					<div id="response-holder"></div>
-					<div id="response-holder-nodata"></div>
-					<div id="response-holder-notlogged" style="display:none;">You are not logged in</div>
-					<!--div id="myxml"></div-->
-				</div>
-			</form>
+			<h1>Index page</h1>
+			<div class="col span_24">
+				<p><a href="https://prescription.technology/___include/ajax/ajax.app.logout.asp" id="logoff">Log off</a></p>
+				<div id="response-holder"></div>
+			</div>
 		</div>
 		<script type="text/javascript">
 			function PowerUp() {
 				var oLocalStorage = new classLocalStorage();
-				var $loginForm = $('#login-form');
-				var $loginSubmit = $('#login-submit');
+				var $logOff = $('#logoff');
 				var $responseHolder = $('#response-holder');
-				var $responseHolderNoData = $('#response-holder-nodata');
-				var $responseHolderNotLogged = $('#response-holder-notlogged');
-				//var $myxml = $('#myxml');
-				var xmlToSend = '<root>'
-									+ '<regId>regid1</regId>'
-									+ '<u>adrian@plationline.eu</u>'
-									+ '<p>demo123</p>'
-									+ '<forgotPassword>false</forgotPassword>'
-									+ '<idDevice>dev1</idDevice>'
-								+ '</root>';
-				//$myxml.text(xmlToSend);
+				var $pagePreloader = $('#page-preloader');
 				
-				$loginSubmit.on('touchstart click', function(e) {
-					e.preventDefault();
-					// HTTP request plugin for Phonegap / Cordova
-					// https://github.com/bperin/HttpRequest
-					var email = $('#login-user').val();
-					var params = {
-						'm': $('#m').val(),
-						'j': $('#j').val(),
-						'loginemail': email,
-						'loginpassword': $('#login-pass').val(),
-						'myxml': xmlToSend
-					};
+				prescription.sendMessage("LOGGEDIN");
 
+				$logOff.on('touchstart click', function(e) {
+					e.preventDefault();
+					$pagePreloader.show();
 					var jqxhr = $.ajax({
-						type: $loginForm.prop('method'),
-						url: $loginForm.prop('action'),
-						data: params
+						type: 'GET',
+						url: $logOff.prop('href')
 					}).fail(function(response) {
 						// Failure
-						var code = response.code;
-						var message = response.message;
-						var body = response.body;
+						var json = $.parseJSON(response);
+						var status = json.status;
+						var message = json.message;
 
 						var messages = ''
-										+ '<p class="alert error">response: ' + response + '</p>'
-										+ '<p class="alert error">code: ' + code + '</p>'
+										+ '<p class="alert error">status: ' + status + '</p>'
 										+ '<p class="alert error">message: ' + message + '</p>'
-										+ '<p class="alert error">body: ' + body + '</p>'
 										;
 						$responseHolder.append(messages).show();
 						oLocalStorage.ClearSession();
 					}).done(function(response) {
 						// Success
-						var code = response.code;
-						var message = response.message;
-						var body = response.body;
-						messages = ''
-										+ '<p class="alert success force-wrap">response: ' + JSON.stringify(response) + '</p>'
-										+ '<p class="alert success force-wrap">code: ' + code + '</p>'
-										+ '<p class="alert success force-wrap">message: ' + message + '</p>'
-										+ '<p class="alert success force-wrap">body: ' + JSON.stringify(body) + '</p>'
-										+ '<p class="alert success force-wrap">email: ' + email + '</p>'
-										;
-						
 						try {
-							var data = $.parseJSON(body);
-							if (data.status == '1') {
-								messages += '<p class="alert success">Logged in.</p>';
-											+ '<p class="alert success">email start: ' + email + '</p>';
-								if (oLocalStorage.SetLoggedData(data, email)) {
-									messages += '<p class="success">SetLoggedData</p>';
-									messages += '<p class="success">GetLoggedData: ' + oLocalStorage.GetLoggedData() + '</p>';
-									// Everything is ok, set local storage and redirect
-									//window.location.href = 'file:///android_asset/www/acasa.html';
-									window.location.href = 'acasa.html';
-								} else {
-									// Error - Saving local storage data
-									messages += '<p class="alert error">Could not set local storage data.</p>';
-								}
-								$responseHolder.hide().html(messages).fadeIn('fast');
-							} else {
-								// Error - Credentials error
-								messages += '<p class="alert error">Credentials error.</p>';
-								$responseHolder.hide().html(messages).fadeIn('fast');
+							var json = $.parseJSON(response);
+							var status = json.status;
+							var message = json.message;
+							var user = json.user;
+							console.log('response: ' + response);
+							console.log('JSON.stringify(status): ' + JSON.stringify(status));
+							console.log('JSON.stringify(message): ' + JSON.stringify(message));
+							//messages = ''
+											//+ '<p class="alert success force-wrap">status: ' + status + '</p>'
+											//+ '<p class="alert success force-wrap">message: ' + message + '</p>'
+											//+ '<p class="alert success force-wrap">user: ' + JSON.stringify(user) + '</p>'
+											//+ '<p class="alert success force-wrap">user.username: ' + user.username + '</p>'
+											//+ '<p class="alert success force-wrap">user.username: ' + user[username] + '</p>'
+											//+ '<p class="alert success force-wrap">user.firstname: ' + user.firstname + '</p>'
+											;
+							if (status == '1') {
 								oLocalStorage.ClearSession();
+								console.log('JSON.stringify(user): ' + JSON.stringify(user));
+								//window.location.href = 'file:///android_asset/www/acasa.html';
+								window.location.href = 'conectare.html';
+							} else {
+								// Error - Saving local storage data
+								$responseHolder.hide().html('<p class="alert error">' + message + '</p>').fadeIn('fast');
 							}
 						} catch (err) {
 							// Error - Misc
-								messages = '<p class="alert error">Call succceeded, but parsing got an error: ' + err.message + '.</p>'
-											;
+							messages = '<p class="alert error">Call succceeded, but parsing got an error: ' + err.message + '.</p>';
 							$responseHolder.hide().html(messages).fadeIn('fast');
 						}
-						
-						return;
+						return false;
 					}).always(function() {
 						//alert( "complete" );
+						$pagePreloader.fadeOut();
 					});
 					return false;
 				});
@@ -147,28 +107,9 @@
 					console.log('opening side panel');
 					prescription.sendMessage("CART");
 				});
-				$loginForm.on('touchstart click', '#login-submit', function(e){
-					e.preventDefault();
-					console.log('logging in click on submit');
-					prescription.sendMessage("CART");
-				}).on('kewdown', '#login-user, #login-pass', function(e){
-					var code = e.keyCode || e.which;
-					if(code == 13) { //Enter keycode
-						e.preventDefault();
-						//Do something
-						console.log('logging in via ENTER');
-						prescription.sendMessage("CART");
-					}
-				});
-				$('#sterge-sesiune').on('touchstart click', function(e) {
-					oLocalStorage.ClearSession();
-					$responseHolderNotLogged.fadeIn();
-					return false;
-				})
 			};
 
 			$(function() {
-				//PowerUp();
 				document.addEventListener("deviceready", PowerUp, true);       
 			});
 		</script>
