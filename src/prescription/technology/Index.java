@@ -10,9 +10,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.SearchView;
 import prescription.technology.code.PrescriptionTechnologyWithNavigationDrawer;
+import prescription.technology.code.navigation.drawer.CustomCordovaWebView;
 import prescription.technology.code.receivers.CartBroadcastReceiver;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Index extends PrescriptionTechnologyWithNavigationDrawer {
 
@@ -21,7 +22,7 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appView.loadUrl("file:///android_asset/www/conectare.html");
+        appView.loadUrl("file:///android_asset/www/index.html");
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
@@ -46,10 +47,25 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
     }
 
     @Override
-    protected HashMap<String, BroadcastReceiver> GetBroadcastsMap() {
-        HashMap<String, BroadcastReceiver> map = new HashMap<String, BroadcastReceiver>();
+    protected ConcurrentHashMap<String, BroadcastReceiver> GetBroadcastsMap() {
+        ConcurrentHashMap<String, BroadcastReceiver> map = new ConcurrentHashMap<String, BroadcastReceiver>();
         CartBroadcastReceiver br = new CartBroadcastReceiver();
         map.put("CART", br);
+        BroadcastReceiver loggedInBroadcast = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction() == "LOGGEDIN") {
+                    Index activity = (Index) context;
+                    CustomCordovaWebView cartView = (CustomCordovaWebView) activity.NavigationDrawerViews.get("CART");
+                    if (cartView != null) {
+                        cartView.sendJavascript("var event = document.createEvent('Event'); event.initEvent('LOGGEDIN',true,true); document.addEventListener('LOGGEDIN',function(e){}); document.dispatchEvent(event);");
+                    } else {
+                        Log.v(TAG, "cartView is not set");
+                    }
+                }
+            }
+        };
+        map.put("LOGGEDIN", loggedInBroadcast);
         return map;
     }
 

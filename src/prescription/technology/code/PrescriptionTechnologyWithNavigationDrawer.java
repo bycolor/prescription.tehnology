@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -28,6 +27,7 @@ import prescription.technology.code.webview.WebViewInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -48,7 +48,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
     private ListView mDrawerList;
     private CordovaPlugin activityResultCallback;
     private ActionBarDrawerToggle mDrawerToggle;
-    private HashMap<String, BroadcastReceiver> broadcastReceiverHashMap;
+    private ConcurrentHashMap<String, BroadcastReceiver> broadcastReceiverHashMap;
     //</editor-fold>
 
     //<editor-fold desc="Override">
@@ -182,7 +182,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
     //</editor-fold>
 
     //<editor-fold desc="Abstract">
-    protected abstract HashMap<String, BroadcastReceiver> GetBroadcastsMap();
+    protected abstract ConcurrentHashMap<String, BroadcastReceiver> GetBroadcastsMap();
 
     //</editor-fold>
 
