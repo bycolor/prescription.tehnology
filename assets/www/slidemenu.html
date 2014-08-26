@@ -1,39 +1,41 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Slide Menu</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/slidemenu.css" media="screen" />
-		
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="js/custom.jquery.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic" rel="stylesheet" type="text/css" />
-	</head>
-	<body id="slidemenu">
-		<div id="holder-languages">
-			<a href="#" class="language-flag english selected">&nbsp;</a>
-			<a href="#" class="language-flag german">&nbsp;</a>
-			<a href="#" class="language-flag dutch">&nbsp;</a>
-			<a href="#" class="language-flag french">&nbsp;</a>
-			<a href="#" class="language-flag spanish">&nbsp;</a>
-		</div>
-		<div id="holder-account-info">
-			<h1 class="autoupdate" id="username"></h1>
-		</div>
-		<div id="holder-shopping-cart">
-			<h2 id="ordered-items">Ordered items</h2>
-			<button id="temp">Manually pull userdata<button>
-			<ul class="shopping-cart-responsive">
-				<li></li>
-			</ul>
-		</div>
-		
-		<script type="text/javascript">
+<head>
+    <title>Slide Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/slidemenu.css" media="screen"/>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body id="slidemenu">
+<div id="holder-languages">
+    <a href="#" class="language-flag english selected">&nbsp;</a>
+    <a href="#" class="language-flag german">&nbsp;</a>
+    <a href="#" class="language-flag dutch">&nbsp;</a>
+    <a href="#" class="language-flag french">&nbsp;</a>
+    <a href="#" class="language-flag spanish">&nbsp;</a>
+</div>
+<div id="holder-account-info">
+    <h1 class="autoupdate" id="username"></h1>
+</div>
+<div id="holder-shopping-cart">
+    <h2 id="ordered-items">Ordered items</h2>
+    <button id="temp">Manually pull userdata
+        <button>
+            <ul class="shopping-cart-responsive">
+                <li></li>
+            </ul>
+</div>
+
+<script type="text/javascript">
 			function PowerUp() {
 				var oLocalStorage = new classLocalStorage();
 				var $shoppingCart = $('#shopping-cart');
@@ -73,6 +75,10 @@
 			$(function() {
 				document.addEventListener("deviceready", PowerUp, true);       
 			});
-		</script>
-	</body>
+			var LOGGEDIN = document.createEvent('Event');
+			LOGGEDIN.initEvent('LOGGEDIN',true,true);
+
+
+</script>
+</body>
 </html>

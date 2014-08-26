@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -56,19 +57,6 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        //getActionBar().hide();
-        //getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#e4f2f2")));
-        /*
-        getActionBar().setDisplayShowHomeEnabled(false);
-        getActionBar().setDisplayShowCustomEnabled(true);
-        getActionBar().setDisplayShowTitleEnabled(false);
-        getActionBar().setCustomView(R.layout.action_bar);
-        LayoutInflater vi = LayoutInflater.from(this);
-        CordovaWebView actionbar = (CordovaWebView) vi.inflate(R.layout.action_bar, null);
-        actionbar.loadUrl("file:///android_asset/www/accountinfo.html");
-        */
-
         setContentView(R.layout.activity_main);
         appView = (CordovaWebView) findViewById(R.id.cordova_main_webview);
         Config.init(this);
@@ -94,6 +82,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
         broadcastReceiverHashMap = GetBroadcastsMap();
         for (String key : broadcastReceiverHashMap.keySet()) {
             registerReceiver(broadcastReceiverHashMap.get(key), new IntentFilter(key));
+            Log.v(TAG, "REGISTERED RECEIVER:" + key);
         }
         //mDrawerLayout.openDrawer(Gravity.LEFT);
     }
@@ -110,6 +99,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
         super.onStop();
         for (String key : broadcastReceiverHashMap.keySet()) {
             unregisterReceiver(broadcastReceiverHashMap.get(key));
+            Log.v(TAG, "UNREGISTERED RECEIVER:" + key);
         }
     }
 

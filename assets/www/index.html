@@ -37,16 +37,14 @@
 		</div>
 		<script type="text/javascript">
 			function PowerUp() {
-			    console.log('aa');
 				var oLocalStorage = new classLocalStorage();
 				var $logOff = $('#logoff');
 				var $responseHolder = $('#response-holder');
 				var $pagePreloader = $('#page-preloader');
-				
-				prescription.sendMessage("LOGGEDIN");
 
 				$logOff.on('touchstart click', function(e) {
 					e.preventDefault();
+
 					$pagePreloader.show();
 					var jqxhr = $.ajax({
 						type: 'GET',
@@ -106,10 +104,10 @@
 				$('#nav-toggle').on('touchstart click', function(e){
 					e.preventDefault();
 					console.log('opening side panel');
-					prescription.sendMessage("CART");
+					//prescription.sendMessage("CART");
+					prescription.sendMessage("LOGGEDIN");
 				});
 			};
-
 			$(function() {
 				document.addEventListener("deviceready", PowerUp, true);       
 			});
