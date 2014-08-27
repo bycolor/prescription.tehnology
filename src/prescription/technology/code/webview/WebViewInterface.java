@@ -43,10 +43,20 @@ public class WebViewInterface {
         Log.v(TAG, "BROADCAST:" + action + " HAS BEEN SENT");
     }
 
+    @JavascriptInterface
+    public void OnDrawerAction(String action) {
+        Intent i = new Intent("DRAWER");
+        if (action.equals("open"))
+            i.putExtra(action, "1");
+        else
+            i.putExtra(action, "0");
+    }
+
+    @JavascriptInterface
     public String XmlToJson(final String xml) throws JSONException {
         JSONObject xmlJSONObj = XML.toJSONObject(xml);
-        String jsonPrettyPrintString = xmlJSONObj.toString();
-        return jsonPrettyPrintString;
+        String json = xmlJSONObj.toString();
+        return json;
     }
 
     public String GetFileContent(final String path) {

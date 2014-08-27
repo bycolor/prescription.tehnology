@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.SearchView;
@@ -50,6 +51,20 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
         ConcurrentHashMap<String, BroadcastReceiver> map = new ConcurrentHashMap<String, BroadcastReceiver>();
         LEFT_MENU_BROADCAST_RECEIVER br = new LEFT_MENU_BROADCAST_RECEIVER();
         map.put("LEFT_MENU_BROADCAST_RECEIVER", br);
+        BroadcastReceiver drawer = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.hasExtra("open")) {
+                    if (intent.getStringExtra("open").equals("1")) {
+                        mDrawerLayout.openDrawer(Gravity.LEFT);
+                    } else {
+                        mDrawerLayout.closeDrawer(Gravity.LEFT);
+                    }
+                } else
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+            }
+        };
+        map.put("DRAWER", drawer);
         return map;
     }
 
