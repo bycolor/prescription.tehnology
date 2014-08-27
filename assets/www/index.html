@@ -22,7 +22,7 @@
 		<div class="container wrap">
 			<div class="row gutters">
 				<div class="col span_24">
-					<a href="/" id="logo" title="Prescription Technology - Order Form" />Prescription Technology - Order Form</a>
+					<a href="/" id="logo" title="Prescription Technology - Order Form" /><img src="img/logo_PT.png" alt="" /></a>
 					<a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu" />Menu</a>
 				</div>
 			</div>
@@ -68,9 +68,9 @@
 							var status = json.status;
 							var message = json.message;
 							var user = json.user;
-							console.log('response: ' + response);
-							console.log('JSON.stringify(status): ' + JSON.stringify(status));
-							console.log('JSON.stringify(message): ' + JSON.stringify(message));
+							//console.log('response: ' + response);
+							//console.log('JSON.stringify(status): ' + JSON.stringify(status));
+							//console.log('JSON.stringify(message): ' + JSON.stringify(message));
 							//messages = ''
 											//+ '<p class="alert success force-wrap">status: ' + status + '</p>'
 											//+ '<p class="alert success force-wrap">message: ' + message + '</p>'
@@ -81,7 +81,7 @@
 											;
 							if (status == '1') {
 								oLocalStorage.ClearSession();
-								console.log('JSON.stringify(user): ' + JSON.stringify(user));
+								//console.log('JSON.stringify(user): ' + JSON.stringify(user));
 								//window.location.href = 'file:///android_asset/www/acasa.html';
 								window.location.href = 'conectare.html';
 							} else {
@@ -106,6 +106,7 @@
 					console.log('opening side panel');
 					//prescription.sendMessage("CART");
 					prescription.sendMessage("LOGGEDIN");
+					prescription.sendMessage("OPENCART");
 				});
 			};
 			$(function() {

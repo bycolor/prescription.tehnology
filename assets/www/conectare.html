@@ -22,7 +22,7 @@
 		<div class="container wrap">
 			<div class="row gutters">
 				<div class="col span_24">
-					<a href="/" id="logo" title="Prescription Technology - Order Form" />Prescription Technology - Order Form</a>
+					<a href="/" id="logo" title="Prescription Technology - Order Form" /><img src="img/logo_PT.png" alt="" /></a>
 					<!--<a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu" />Menu</a>-->
 				</div>
 			</div>
@@ -33,17 +33,14 @@
 			<form id="login-form" action="https://prescription.technology/___include/ajax/ajax.app.regcust.asp" method="post" class="row gutters">
 				<input type="hidden" id="m" name="m" value="0" />
 				<input type="hidden" id="j" name="j" value="1" />
-				<div class="col span_24">
-					<input type="text" id="loginemail" name="loginemail" value="" placeholder="Enter your username" />
-					<input type="password" id="loginpassword" name="loginpassword" value="" placeholder="Enter your username" />
-					<button type="submit" class="btn btn-big has-icon" id="login-submit"><div class="btn-text">Sign in</div><div class="btn-icon"><i class="fa fa-angle-double-right"></i></div></button>
-					<div id="response-holder"></div>
-					<div id="response-holder2"></div>
-					<div id="response-holder3"></div>
-					<div id="response-holder-nodata"></div>
-					<div id="response-holder-notlogged" style="display:none;">You are not logged in</div>
-					<!--div id="myxml"></div-->
-				</div>
+				<input type="text" id="loginemail" name="loginemail" value="" placeholder="Enter your username" />
+				<input type="password" id="loginpassword" name="loginpassword" value="" placeholder="Enter your username" />
+				<button type="submit" class="btn btn-big has-icon" id="login-submit"><div class="btn-text">Sign in</div><div class="btn-icon"><i class="fa fa-angle-double-right"></i></div></button>
+				<div id="response-holder"></div>
+				<div id="response-holder2"></div>
+				<div id="response-holder3"></div>
+				<div id="response-holder-nodata"></div>
+				<div id="response-holder-notlogged" style="display:none;">You are not logged in</div>
 			</form>
 		</div>
 		<script type="text/javascript">
@@ -85,6 +82,7 @@
 							var status = json.status;
 							var message = json.message;
 							var user = json.user;
+							var order = json.order;
 							//console.log('response: ' + response);
 							//console.log('method: ' + $loginForm.prop('method'));
 							//console.log('action: ' + $loginForm.prop('action'));
@@ -92,8 +90,9 @@
 							//console.log('JSON.stringify(status): ' + JSON.stringify(status));
 							//console.log('JSON.stringify(message): ' + JSON.stringify(message));
 							//console.log('JSON.stringify(user): ' + JSON.stringify(user));
-							//messages = ''
-											//+ '<p class="alert success force-wrap">status: ' + status + '</p>'
+							messages = ''
+											+ '<p class="alert success force-wrap">order.productcount: ' + order.productcount + '</p>'
+											+ '<p class="alert success force-wrap">order.xmlorder: ' + order.xmlorder + '</p>'
 											//+ '<p class="alert success force-wrap">message: ' + message + '</p>'
 											//+ '<p class="alert success force-wrap">user: ' + JSON.stringify(user) + '</p>'
 											//+ '<p class="alert success force-wrap">user.username: ' + user.username + '</p>'
@@ -103,7 +102,7 @@
 							if (status == '1') {
 								//messages += '<p class="alert success">Logged in.</p>';
 								//			+ '<p class="alert success">user.username: ' + user.username + '</p>';
-								if (oLocalStorage.SetLoggedData(user)) {
+								if (oLocalStorage.SetLoggedData(json)) {
 									//messages += '<p class="success">SetLoggedData</p>';
 									//messages += '<p class="success">GetLoggedData: ' + oLocalStorage.GetLoggedData() + '</p>';
 									// Everything is ok, set local storage and redirect
@@ -147,10 +146,10 @@
 
 			$(function() {
 				if (oLocalStorage.IsLogged) {
-					console.log(oLocalStorage.logged);
+					//console.log(oLocalStorage.logged);
 					window.location.href = 'index.html';
 				} else {
-					console.log(oLocalStorage.logged);
+					//console.log(oLocalStorage.logged);
 					//PowerUp();
 					document.addEventListener("deviceready", PowerUp, true);
 				}

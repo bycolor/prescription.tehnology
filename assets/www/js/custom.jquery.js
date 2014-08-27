@@ -28,31 +28,33 @@ function onDeviceReady() {
 		/* Set data */
 		var noError = true;
 		if (typeof data == 'undefined') { noError = false; };
-		if (typeof data.username != 'undefined') { window.localStorage.setItem('username', data.username); } else { noError = false; };
-		if (typeof data.firstname != 'undefined') { window.localStorage.setItem('firstname', data.firstname); } else { noError = false; };
-		if (typeof data.lastname != 'undefined') { window.localStorage.setItem('lastname', data.lastname); } else { noError = false; };
-		if (typeof data.dobday != 'undefined') { window.localStorage.setItem('dobday', data.dobday); } else { noError = false; };
-		if (typeof data.dobmonth != 'undefined') { window.localStorage.setItem('dobmonth', data.dobmonth); } else { noError = false; };
-		if (typeof data.dobyear != 'undefined') { window.localStorage.setItem('dobyear', data.dobyear); } else { noError = false; };
-		if (typeof data.age != 'undefined') { window.localStorage.setItem('age', data.age); } else { noError = false; };
-		if (typeof data.weight != 'undefined') { window.localStorage.setItem('weight', data.weight); } else { noError = false; };
-		if (typeof data.heightfeet != 'undefined') { window.localStorage.setItem('heightfeet', data.heightfeet); } else { noError = false; };
-		if (typeof data.heightinches != 'undefined') { window.localStorage.setItem('heightinches', data.heightinches); } else { noError = false; };
-		if (typeof data.sex != 'undefined') { window.localStorage.setItem('sex', data.sex); } else { noError = false; };
-		if (typeof data.dayphone != 'undefined') { window.localStorage.setItem('dayphone', data.dayphone); } else { noError = false; };
-		if (typeof data.nightphone != 'undefined') { window.localStorage.setItem('nightphone', data.nightphone); } else { noError = false; };
-		if (typeof data.shipaddress != 'undefined') { window.localStorage.setItem('shipaddress', data.shipaddress); } else { noError = false; };
-		if (typeof data.shipaddress2 != 'undefined') { window.localStorage.setItem('shipaddress2', data.shipaddress2); } else { noError = false; };
-		if (typeof data.ShipCity != 'undefined') { window.localStorage.setItem('ShipCity', data.ShipCity); } else { noError = false; };
-		if (typeof data.ShipState != 'undefined') { window.localStorage.setItem('ShipState', data.ShipState); } else { noError = false; };
-		if (typeof data.ShipCountry != 'undefined') { window.localStorage.setItem('ShipCountry', data.ShipCountry); } else { noError = false; };
-		if (typeof data.ShipZip != 'undefined') { window.localStorage.setItem('ShipZip', data.ShipZip); } else { noError = false; };
-		if (typeof data.BillAddress != 'undefined') { window.localStorage.setItem('BillAddress', data.BillAddress); } else { noError = false; };
-		if (typeof data.BillAddress2 != 'undefined') { window.localStorage.setItem('BillAddress2', data.BillAddress2); } else { noError = false; };
-		if (typeof data.BillCity != 'undefined') { window.localStorage.setItem('BillCity', data.BillCity); } else { noError = false; };
-		if (typeof data.BillState != 'undefined') { window.localStorage.setItem('BillState', data.BillState); } else { noError = false; };
-		if (typeof data.BillCountry != 'undefined') { window.localStorage.setItem('BillCountry', data.BillCountry); } else { noError = false; };
-		if (typeof data.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.BillZip); } else { noError = false; };
+		if (typeof data.user.username != 'undefined') { window.localStorage.setItem('username', data.user.username); } else { noError = false; };
+		if (typeof data.user.firstname != 'undefined') { window.localStorage.setItem('firstname', data.user.firstname); } else { noError = false; };
+		if (typeof data.user.lastname != 'undefined') { window.localStorage.setItem('lastname', data.user.lastname); } else { noError = false; };
+		if (typeof data.user.dobday != 'undefined') { window.localStorage.setItem('dobday', data.user.dobday); } else { noError = false; };
+		if (typeof data.user.dobmonth != 'undefined') { window.localStorage.setItem('dobmonth', data.user.dobmonth); } else { noError = false; };
+		if (typeof data.user.dobyear != 'undefined') { window.localStorage.setItem('dobyear', data.user.dobyear); } else { noError = false; };
+		if (typeof data.user.age != 'undefined') { window.localStorage.setItem('age', data.user.age); } else { noError = false; };
+		if (typeof data.user.weight != 'undefined') { window.localStorage.setItem('weight', data.user.weight); } else { noError = false; };
+		if (typeof data.user.heightfeet != 'undefined') { window.localStorage.setItem('heightfeet', data.user.heightfeet); } else { noError = false; };
+		if (typeof data.user.heightinches != 'undefined') { window.localStorage.setItem('heightinches', data.user.heightinches); } else { noError = false; };
+		if (typeof data.user.sex != 'undefined') { window.localStorage.setItem('sex', data.user.sex); } else { noError = false; };
+		if (typeof data.user.dayphone != 'undefined') { window.localStorage.setItem('dayphone', data.user.dayphone); } else { noError = false; };
+		if (typeof data.user.nightphone != 'undefined') { window.localStorage.setItem('nightphone', data.user.nightphone); } else { noError = false; };
+		if (typeof data.user.shipaddress != 'undefined') { window.localStorage.setItem('shipaddress', data.user.shipaddress); } else { noError = false; };
+		if (typeof data.user.shipaddress2 != 'undefined') { window.localStorage.setItem('shipaddress2', data.user.shipaddress2); } else { noError = false; };
+		if (typeof data.user.ShipCity != 'undefined') { window.localStorage.setItem('ShipCity', data.user.ShipCity); } else { noError = false; };
+		if (typeof data.user.ShipState != 'undefined') { window.localStorage.setItem('ShipState', data.user.ShipState); } else { noError = false; };
+		if (typeof data.user.ShipCountry != 'undefined') { window.localStorage.setItem('ShipCountry', data.user.ShipCountry); } else { noError = false; };
+		if (typeof data.user.ShipZip != 'undefined') { window.localStorage.setItem('ShipZip', data.user.ShipZip); } else { noError = false; };
+		if (typeof data.user.BillAddress != 'undefined') { window.localStorage.setItem('BillAddress', data.user.BillAddress); } else { noError = false; };
+		if (typeof data.user.BillAddress2 != 'undefined') { window.localStorage.setItem('BillAddress2', data.user.BillAddress2); } else { noError = false; };
+		if (typeof data.user.BillCity != 'undefined') { window.localStorage.setItem('BillCity', data.user.BillCity); } else { noError = false; };
+		if (typeof data.user.BillState != 'undefined') { window.localStorage.setItem('BillState', data.user.BillState); } else { noError = false; };
+		if (typeof data.user.BillCountry != 'undefined') { window.localStorage.setItem('BillCountry', data.user.BillCountry); } else { noError = false; };
+		if (typeof data.user.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.user.BillZip); } else { noError = false; };
+		if (typeof data.order.productcount != 'undefined') { window.localStorage.setItem('productcount', data.order.productcount); } else { noError = false; };
+		if (typeof data.order.xmlorder != 'undefined') { window.localStorage.setItem('xmlorder', data.order.xmlorder); } else { noError = false; };
 		this.logged = 1;
 		window.localStorage.setItem('logged', this.logged);
 		
@@ -150,6 +152,8 @@ function onDeviceReady() {
 		this.BillState = window.localStorage.getItem('BillState');
 		this.BillCountry = window.localStorage.getItem('BillCountry');
 		this.BillZip = window.localStorage.getItem('BillZip');
+		this.productcount = window.localStorage.getItem('productcount');
+		this.xmlorder = window.localStorage.getItem('xmlorder');
 		this.logged = window.localStorage.getItem('logged');
 
 		/*
@@ -191,6 +195,10 @@ function onDeviceReady() {
 	/* End Local Storage */
 	
 	//var oLocalStorage = new classLocalStorage();
+
+	String.prototype.replaceAll = function(str1, str2, ignore) {
+		return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+	};
 };
 
 $(function() {

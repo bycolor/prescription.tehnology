@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.Gravity;
 import prescription.technology.Index;
 import prescription.technology.code.navigation.drawer.CustomCordovaWebView;
 
@@ -21,12 +22,17 @@ public class LEFT_MENU_BROADCAST_RECEIVER extends BroadcastReceiver {
             String action = intent.getStringExtra("ACTION");
             String js_statements = intent.getStringExtra("JS_STATEMENTS");
             if (cartView != null) {
-                if (js_statements != null)
-                    cartView.sendJavascript(js_statements);
-                else {
-                    Log.v(TAG, "dispatchEvent " + action);
-                    cartView.sendJavascript("document.dispatchEvent(" + action + ")");
-                }
+                //if (intent.getAction() == "CART") {
+                if (action == "OPENCART") {
+                    activity.mDrawerLayout.openDrawer(Gravity.LEFT);
+                } else {
+					if (js_statements != null)
+						cartView.sendJavascript(js_statements);
+					else {
+						Log.v(TAG, "dispatchEvent " + action);
+						cartView.sendJavascript("document.dispatchEvent(" + action + ")");
+					}
+				}
             } else {
                 Log.v(TAG, "cartView is not set");
             }

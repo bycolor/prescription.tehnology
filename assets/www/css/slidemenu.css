@@ -6,8 +6,13 @@ body#slidemenu {
 	overflow: hidden;
 	padding: 1rem;
 }
-	#slidemenu h1 {
+	#slidemenu h1,
+	#slidemenu h2 {
 		color: #fff;
+		margin-top: 3rem;
+	}
+	#slidemenu h2 {
+		font-size: 1.50em;
 	}
 	#holder-languages {
 		margin-bottom: 2rem;
@@ -22,6 +27,34 @@ body#slidemenu {
 			-khtml-opacity: 1;
 			opacity: 1;
 		}
+	.actions {
+	}
+		.actions li {
+			margin-bottom: 1px;
+		}
+			.actions li a {
+				display: block;
+				color: #fff;
+			}
+			.actions li a span {
+				background: #167698;
+				padding: 1.5rem;
+				display: block;
+				width: 100%;
+				height: 4.5rem;
+				text-align: left;
+			}
+			.actions li a span.actions-icon {
+				float: left;
+				padding: 1.2rem 1.5rem;
+				text-align: center;
+				width: 5rem;
+				border-right: 1px solid #005982;
+			}
+				.actions li a i {
+					color: #ec9062;
+				}
+
 	#link-shopping-cart {
 		color: #fff;
 	}

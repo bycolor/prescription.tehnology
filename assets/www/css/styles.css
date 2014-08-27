@@ -246,12 +246,15 @@
 				/* http://ivomynttinen.com/blog/a-guide-for-creating-a-better-retina-web/ */
 				#logo {
 					float: left;
-					width: 248px;
-					height: 68px;
-					margin: 3rem 0 2rem;
-					text-indent: -99999px;
-					background: url('../img/logo_PT.png') 0 0 no-repeat;
+					width: 125px;
+					height: 34px;
+					margin: 4rem 0 2rem;
+					background: none;
 				}
+					#logo img {
+						width: 125px;
+						height: 34px;
+					}
 				#nav-toggle {
 					float: right;
 					width: 40px;
@@ -264,8 +267,10 @@
 				/*CSS for serving the retina image to devices with a high "device-pixel-ratio":*/
 				@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
 					#logo{
+						/*
 						background-image: url('../img/logo_PT@2x.png');
 						background-size: 100px 100px;
+						*/
 					}
 					#nav-toggle { 
 						background: transparent url('../img/icon_menu@2x.png') no-repeat;
