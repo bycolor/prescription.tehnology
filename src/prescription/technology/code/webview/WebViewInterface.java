@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,6 +43,11 @@ public class WebViewInterface {
         Log.v(TAG, "BROADCAST:" + action + " HAS BEEN SENT");
     }
 
+    public String XmlToJson(final String xml) throws JSONException {
+        JSONObject xmlJSONObj = XML.toJSONObject(xml);
+        String jsonPrettyPrintString = xmlJSONObj.toString();
+        return jsonPrettyPrintString;
+    }
 
     public String GetFileContent(final String path) {
         if (path.startsWith("file:///android_asset/www/")) {
