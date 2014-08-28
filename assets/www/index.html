@@ -28,10 +28,14 @@
 			</div>
 		</div>
 
-        <div id="response-holder"></div>
-    </div>
-</div>
-<script type="text/javascript">
+		<div class="container wrap">
+			<h1>Index page</h1>
+			<div class="col span_24">
+				<p><a href="https://prescription.technology/___include/ajax/ajax.app.logout.asp" id="logoff">Log off</a></p>
+				<div id="response-holder"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
 			function PowerUp() {
 				var oLocalStorage = new classLocalStorage();
 				var $logOff = $('#logoff');
@@ -100,16 +104,14 @@
 				$('#nav-toggle').on('touchstart click', function(e){
 					e.preventDefault();
 					console.log('opening side panel');
-					prescription.onDrawerAction("open");
-					//prescription.sendMessage("LOGGEDIN");
+					//prescription.sendMessage("CART");
+					prescription.sendMessage("LOGGEDIN");
 					prescription.sendMessage("OPENCART");
 				});
 			};
 			$(function() {
 				document.addEventListener("deviceready", PowerUp, true);       
 			});
-
-
-</script>
-</body>
+		</script>
+	</body>
 </html>
