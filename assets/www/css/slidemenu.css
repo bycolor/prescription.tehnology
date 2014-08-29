@@ -55,8 +55,26 @@ body#slidemenu {
 					color: #ec9062;
 				}
 
-	#link-shopping-cart {
+	#shopping-cart li {
 		color: #fff;
+		margin-bottom: 1px;
+		padding: 1rem 1.5rem;
+		background: #2397ab;
 	}
-	
+	#shopping-cart li:nth-child(5n) {
+		background: #1685a1;
+	}
+		#shopping-cart li a {
+			display: block;
+			color: #fff;
+			font-weight: 300;
+			padding: .3rem 0;
+		}
+			#shopping-cart li a > span:nth-child(2n) {
+				font-size: 1.3em;
+			}
+			#shopping-cart li a span.item,
+			#shopping-cart li a span.subtotal {
+				font-weight: 600;
+			}
 	.

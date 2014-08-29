@@ -42,12 +42,48 @@
 		</div>
 		<div id="holder-shopping-cart">
 			<h2>Ordered items</h2>
+			<ul id="shopping-cart">
+				<li>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Item</span>
+						<span class="col span_20 item"><strong>Aldara 5% Cream x 12 Sachets</strong></span>
+					</a>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Item price</span>
+						<span class="col span_20 itemprice">&pound; 1234.99</span>
+					</a>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Quantity</span>
+						<span class="col span_20 quantity">&pound; 1234.99</span>
+					</a>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Subtotal</span>
+						<span class="col span_20 subtotal">&pound; 3704.97</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Item</span>
+						<span class="col span_20 item">Aldara 5% Cream x 12 Sachets</span>
+					</a>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Item price</span>
+						<span class="col span_20 itemprice">&pound; 1234.99</span>
+					</a>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Quantity</span>
+						<span class="col span_20 quantity">&pound; 1234.99</span>
+					</a>
+					<a href="#" class="row gutters">
+						<span class="col span_4">Subtotal</span>
+						<span class="col span_20 subtotal">&pound; 3704.97</span>
+					</a>
+				</li>
+			</ul>
+
 			<label>Temp</label>
 			<textarea id="console" data-term="xmlorder" rows="10"></textarea>
-			<button id="temp">Manually pull userdata</button>
-			<ul class="shopping-cart">
-				<li></li>
-			</ul>
+			<button id="manually-pull">Manually pull userdata</button>
 		</div>
 
 		<script type="text/javascript">
@@ -70,6 +106,22 @@
 							})
 						}
 						
+						$('#manually-pull').on('touchstart click', function(e) {
+							e.preventDefault();
+							if (oLocalStorage.IsLogged) {
+								oLocalStorage.GetLoggedData();
+								UpdateInfo();
+								alert('oLocalStorage.username 1: ' + oLocalStorage.username);
+								alert('oLocalStorage.productcount 1: ' + oLocalStorage.productcount);
+								alert('oLocalStorage.xmlorder 1: ' + oLocalStorage.xmlorder);
+							} else {
+								alert('No user data in local storage!');
+							}
+						});
+					};
+					
+					$(function() {
+						document.addEventListener("deviceready", PowerUp, true);
 						document.addEventListener("LOGGEDIN", function(e) { 
 							alert('LOGGEDIN event fired, now lets start populate slidemenu');
 							if (oLocalStorage.GetLoggedData()) {
@@ -81,30 +133,9 @@
 								alert('Nu user data to get from local storage!');
 							}
 						});
-						
 						document.addEventListener("OPENCART", function(e) { 
 							alert('OPENCART event fired, opening slidemenu');
 						});
-						
-						$('#temp').on('touchstart click', function(e) {
-							e.preventDefault();
-							if (oLocalStorage.GetLoggedData()) {
-								UpdateInfo();
-								alert('oLocalStorage.username 1: ' + oLocalStorage.username);
-								alert('oLocalStorage.productcount 1: ' + oLocalStorage.productcount);
-								alert('oLocalStorage.xmlorder 1: ' + oLocalStorage.xmlorder);
-							} else {
-								alert('No user data in local storage!');
-							}
-						});
-						
-						$('#link-shopping-cart').on('click', function(e) {
-							$shoppingCart.hide().html('cart dispatched').fadeIn();
-						})
-					};
-					
-					$(function() {
-						document.addEventListener("deviceready", PowerUp, true);       
 					});
 					var LOGGEDIN = document.createEvent('Event');
 					var OPENCART = document.createEvent('Event');
