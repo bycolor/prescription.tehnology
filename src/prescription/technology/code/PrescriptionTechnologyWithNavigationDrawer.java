@@ -99,6 +99,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
         super.onStop();
         for (String key : broadcastReceiverHashMap.keySet()) {
             unregisterReceiver(broadcastReceiverHashMap.get(key));
+            broadcastReceiverHashMap.remove(key);
             Log.v(TAG, "UNREGISTERED RECEIVER:" + key);
         }
     }
