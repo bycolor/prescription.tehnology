@@ -36,8 +36,7 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			var oLocalStorage;
-			oLocalStorage = new classLocalStorage();
+			var oLocalStorage = new classLocalStorage();
 			
 			function PowerUp() {
 				var oLocalStorage = new classLocalStorage();
@@ -106,19 +105,26 @@
 				
 				$('#nav-toggle').on('touchstart click', function(e){
 					e.preventDefault();
+					//alert('index.html 2 - oLocalStorage.logged: ' + oLocalStorage.logged);
 					console.log('opening side panel');
 					//prescription.sendMessage("CART");
-					prescription.sendMessage("LOGGEDIN");
-					prescription.sendMessage("OPENCART");
+					if (typeof prescription != 'undefined') {
+						prescription.sendMessage("LOGGEDIN");
+						prescription.sendMessage("OPENCART");
+					}
 				});
 			};
 			$(function() {
-				if (!oLocalStorage.IsLogged) {
+				oLocalStorage.IsLogged();
+				if (oLocalStorage.logged != 1) {
+					//alert('logged is false, redirect to conectare.html');
 					window.location.href = 'conectare.html';
 				} else {
-					//console.log(oLocalStorage.logged);
-					//PowerUp();
+					//alert('logged is true, no redirect');
 					document.addEventListener("deviceready", PowerUp, true);
+					
+					/* Only for in-browser (not in Android) testing */
+					//PowerUp();
 				}
 			});
 		</script>

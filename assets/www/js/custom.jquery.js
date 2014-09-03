@@ -25,53 +25,61 @@ function onDeviceReady() {
 
 	classLocalStorage.prototype.SetLoggedData = function(data) {
 		window.localStorage.clear();
+		this.logged = 0;
+		window.localStorage.setItem('logged', this.logged);
+
 		/* Set data */
 		var noError = true;
 		if (typeof data == 'undefined') { noError = false; };
 		if (typeof data.user.username != 'undefined') { window.localStorage.setItem('username', data.user.username); } else { noError = false; };
-		if (typeof data.user.firstname != 'undefined') { window.localStorage.setItem('firstname', data.user.firstname); } else { noError = false; };
-		if (typeof data.user.lastname != 'undefined') { window.localStorage.setItem('lastname', data.user.lastname); } else { noError = false; };
-		if (typeof data.user.dobday != 'undefined') { window.localStorage.setItem('dobday', data.user.dobday); } else { noError = false; };
-		if (typeof data.user.dobmonth != 'undefined') { window.localStorage.setItem('dobmonth', data.user.dobmonth); } else { noError = false; };
-		if (typeof data.user.dobyear != 'undefined') { window.localStorage.setItem('dobyear', data.user.dobyear); } else { noError = false; };
-		if (typeof data.user.age != 'undefined') { window.localStorage.setItem('age', data.user.age); } else { noError = false; };
-		if (typeof data.user.weight != 'undefined') { window.localStorage.setItem('weight', data.user.weight); } else { noError = false; };
-		if (typeof data.user.heightfeet != 'undefined') { window.localStorage.setItem('heightfeet', data.user.heightfeet); } else { noError = false; };
-		if (typeof data.user.heightinches != 'undefined') { window.localStorage.setItem('heightinches', data.user.heightinches); } else { noError = false; };
-		if (typeof data.user.sex != 'undefined') { window.localStorage.setItem('sex', data.user.sex); } else { noError = false; };
-		if (typeof data.user.dayphone != 'undefined') { window.localStorage.setItem('dayphone', data.user.dayphone); } else { noError = false; };
-		if (typeof data.user.nightphone != 'undefined') { window.localStorage.setItem('nightphone', data.user.nightphone); } else { noError = false; };
-		if (typeof data.user.shipaddress != 'undefined') { window.localStorage.setItem('shipaddress', data.user.shipaddress); } else { noError = false; };
-		if (typeof data.user.shipaddress2 != 'undefined') { window.localStorage.setItem('shipaddress2', data.user.shipaddress2); } else { noError = false; };
-		if (typeof data.user.ShipCity != 'undefined') { window.localStorage.setItem('ShipCity', data.user.ShipCity); } else { noError = false; };
-		if (typeof data.user.ShipState != 'undefined') { window.localStorage.setItem('ShipState', data.user.ShipState); } else { noError = false; };
-		if (typeof data.user.ShipCountry != 'undefined') { window.localStorage.setItem('ShipCountry', data.user.ShipCountry); } else { noError = false; };
-		if (typeof data.user.ShipZip != 'undefined') { window.localStorage.setItem('ShipZip', data.user.ShipZip); } else { noError = false; };
-		if (typeof data.user.BillAddress != 'undefined') { window.localStorage.setItem('BillAddress', data.user.BillAddress); } else { noError = false; };
-		if (typeof data.user.BillAddress2 != 'undefined') { window.localStorage.setItem('BillAddress2', data.user.BillAddress2); } else { noError = false; };
-		if (typeof data.user.BillCity != 'undefined') { window.localStorage.setItem('BillCity', data.user.BillCity); } else { noError = false; };
-		if (typeof data.user.BillState != 'undefined') { window.localStorage.setItem('BillState', data.user.BillState); } else { noError = false; };
-		if (typeof data.user.BillCountry != 'undefined') { window.localStorage.setItem('BillCountry', data.user.BillCountry); } else { noError = false; };
-		if (typeof data.user.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.user.BillZip); } else { noError = false; };
-		if (typeof data.order.productcount != 'undefined') { window.localStorage.setItem('productcount', data.order.productcount); } else { noError = false; };
-		if (typeof data.order.xmlorder != 'undefined') { window.localStorage.setItem('xmlorder', data.order.xmlorder); } else { noError = false; };
-		this.logged = 1;
-		window.localStorage.setItem('logged', this.logged);
+		if (typeof data.user.firstname != 'undefined') { window.localStorage.setItem('firstname', data.user.firstname); };
+		if (typeof data.user.lastname != 'undefined') { window.localStorage.setItem('lastname', data.user.lastname); };
+		if (typeof data.user.dobday != 'undefined') { window.localStorage.setItem('dobday', data.user.dobday); };
+		if (typeof data.user.dobmonth != 'undefined') { window.localStorage.setItem('dobmonth', data.user.dobmonth); };
+		if (typeof data.user.dobyear != 'undefined') { window.localStorage.setItem('dobyear', data.user.dobyear); };
+		if (typeof data.user.age != 'undefined') { window.localStorage.setItem('age', data.user.age); };
+		if (typeof data.user.weight != 'undefined') { window.localStorage.setItem('weight', data.user.weight); };
+		if (typeof data.user.heightfeet != 'undefined') { window.localStorage.setItem('heightfeet', data.user.heightfeet); };
+		if (typeof data.user.heightinches != 'undefined') { window.localStorage.setItem('heightinches', data.user.heightinches); };
+		if (typeof data.user.sex != 'undefined') { window.localStorage.setItem('sex', data.user.sex); };
+		if (typeof data.user.dayphone != 'undefined') { window.localStorage.setItem('dayphone', data.user.dayphone); };
+		if (typeof data.user.nightphone != 'undefined') { window.localStorage.setItem('nightphone', data.user.nightphone); };
+		if (typeof data.user.shipaddress != 'undefined') { window.localStorage.setItem('shipaddress', data.user.shipaddress); };
+		if (typeof data.user.shipaddress2 != 'undefined') { window.localStorage.setItem('shipaddress2', data.user.shipaddress2); };
+		if (typeof data.user.ShipCity != 'undefined') { window.localStorage.setItem('ShipCity', data.user.ShipCity); };
+		if (typeof data.user.ShipState != 'undefined') { window.localStorage.setItem('ShipState', data.user.ShipState); };
+		if (typeof data.user.ShipCountry != 'undefined') { window.localStorage.setItem('ShipCountry', data.user.ShipCountry); };
+		if (typeof data.user.ShipZip != 'undefined') { window.localStorage.setItem('ShipZip', data.user.ShipZip); };
+		if (typeof data.user.BillAddress != 'undefined') { window.localStorage.setItem('BillAddress', data.user.BillAddress); };
+		if (typeof data.user.BillAddress2 != 'undefined') { window.localStorage.setItem('BillAddress2', data.user.BillAddress2); };
+		if (typeof data.user.BillCity != 'undefined') { window.localStorage.setItem('BillCity', data.user.BillCity); };
+		if (typeof data.user.BillState != 'undefined') { window.localStorage.setItem('BillState', data.user.BillState); };
+		if (typeof data.user.BillCountry != 'undefined') { window.localStorage.setItem('BillCountry', data.user.BillCountry); };
+		if (typeof data.user.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.user.BillZip); };
+		if (typeof data.order.itemscount != 'undefined') { window.localStorage.setItem('itemscount', data.order.itemscount); } else { noError = false; };
+		if (typeof data.order.items != 'undefined') { window.localStorage.setItem('items', data.order.items); } else { noError = false; };
+		window.localStorage.setItem('sid', GetSID);
 		
-		if (!this.GetLoggedData()) { 
-			noError = false; 
-			this.logged = 0;
-			window.localStorage.setItem('logged', this.logged);
-		};
-
-		/*
-		messages += '<p class="warning">data.firstname: ' + data.firstname + '</p>'
-						+ '<p class="warning">data.lastname: ' + data.lastname + '</p>'
-						+ '<p class="warning">data.username: ' + data.username + '</p>'
-						+ '<p class="warning">noError: ' + noError + '</p>';
-		$responseHolder2.append(messages).fadeIn();
+		//console.log(data);
+		/* Conditiile ramin SEPARATE! 
+		In GetLoggedData se verifica this.logged, deci trebuie sa fie setat inaintea apelarii metodei
 		*/
-		return noError;
+		if (noError) {
+			this.logged = 1;
+		}
+		//console.log(data.order);
+		//alert('SetLoggedData - data.order.itemscount: ' + data.order.itemscount);
+		//alert('SetLoggedData - data.order.items: ' + data.order.items);
+		//alert('SetLoggedData - data.sid: ' + data.sid);
+		//alert('SetLoggedData - noError: ' + noError);
+		//alert('SetLoggedData - this.logged: ' + this.logged);
+		if (this.GetLoggedData()) {
+			this.logged = 1;
+		}
+		//alert('SetLoggedData 2 - this.logged: ' + this.logged);
+		
+		window.localStorage.setItem('logged', this.logged);
+		return this.logged;
 	};
 	
 
@@ -113,7 +121,7 @@ function onDeviceReady() {
 		
 		/* Check if saved local storage userData is ok */
 		if (typeof this.oid == 'undefined') { return false; };
-		if (typeof this.logged == 'undefined') { this.ClearSession(); return false; };
+		if (typeof this.logged == 'undefined' || this.logged != 1) { this.ClearSession(); return false; };
 		
 		/*
 		messages += ''
@@ -124,7 +132,25 @@ function onDeviceReady() {
 		
 		return true;
 	};
-
+	
+	classLocalStorage.prototype.Set = function(name, value) {
+		this[name] = value;
+		window.localStorage.setItem(name, value);
+	}
+	
+	/* Sursa: http://ko-lwin.blogspot.ro/2010/12/how-to-secure-classic-asp-session-id.html */
+	classLocalStorage.prototype.GetSID = function() {
+		var c_name = "ASPSESSIONID";
+		if (document.cookie.length > 0) {
+			c_start = document.cookie.indexOf(c_name);
+			if (c_start!=-1) {
+				c_end=document.cookie.indexOf("=",c_start);
+				if (c_end==-1) c_end=document.cookie.length;
+				return unescape(document.cookie.substring(c_start,c_end));
+			}
+		}
+		return "";
+	}
 	classLocalStorage.prototype.GetLoggedData = function() {
 		/* Check if it's logged */
 		this.username = window.localStorage.getItem("username");
@@ -152,9 +178,10 @@ function onDeviceReady() {
 		this.BillState = window.localStorage.getItem('BillState');
 		this.BillCountry = window.localStorage.getItem('BillCountry');
 		this.BillZip = window.localStorage.getItem('BillZip');
-		this.productcount = window.localStorage.getItem('productcount');
-		this.xmlorder = window.localStorage.getItem('xmlorder');
-		this.logged = window.localStorage.getItem('logged');
+		this.itemscount = window.localStorage.getItem('itemscount');
+		this.items = window.localStorage.getItem('items');
+		//this.logged = window.localStorage.getItem('logged');
+		this.sid = window.localStorage.getItem('sid');
 
 		/*
 		messages += '<p class="error">1 this.firstname: ' + this.firstname + '</p>'
@@ -168,28 +195,32 @@ function onDeviceReady() {
 		
 
 		/* Check if saved local storage userData is ok */
+		console.log('GetLoggedData - this.username: ' + this.username);
+		console.log('GetLoggedData - this.items: ' + this.items);
+		console.log('GetLoggedData - this.sid: ' + this.sid);
 		if (typeof this.username == 'undefined') { this.ClearSession(); return false; };
-		if (typeof this.firstname == 'undefined') { this.ClearSession(); return false; };
-		if (typeof this.lastname == 'undefined') { this.ClearSession(); return false; };
-		if (typeof this.dayphone == 'undefined') { this.ClearSession(); return false; };
-		if (typeof this.logged == 'undefined') { this.ClearSession(); return false; };
+		if (typeof this.items == 'undefined') { this.ClearSession(); return false; };
+		if (typeof this.sid == 'undefined') { this.ClearSession(); return false; };
 		
-		/*
-		messages += '<p class="error">2 this.firstname: ' + this.firstname + '</p>'
-					+ '<p class="error">2 this.lastname: ' + this.lastname + '</p>'
-					+ '<p class="error">2 this.dayphone: ' + this.dayphone + '</p>'
-					+ '<p class="error">2 this.username: ' + this.username + '</p>'
+		messages += '<p class="error">2 window.localStorage.getItem firstname: ' + window.localStorage.getItem('firstname') + '</p>'
+					+ '<p class="error">2 window.localStorage.getItem lastname: ' + window.localStorage.getItem('lastname') + '</p>'
+					+ '<p class="error">2 window.localStorage.getItem dayphone: ' + window.localStorage.getItem('dayphone') + '</p>'
+					+ '<p class="error">2 window.localStorage.getItem username: ' + window.localStorage.getItem('username') + '</p>'
 					+ '<p class="error">2 this.logged: ' + this.logged + '</p>';
-		$responseHolder3.append(messages).fadeIn();
-		*/
+		$responseHolder2.html(messages).fadeIn();
+		//alert('GetLoggedData - this.logged: ' + this.logged);
+		//this.logged = 1;
+		//if (typeof this.logged == 'undefined' || this.logged != 1) { this.ClearSession(); return false; };
 		
-		return true;
+		return this.logged;
 	};
 
 	classLocalStorage.prototype.ClearSession = function() {
 		/* Clear everything */
 		window.localStorage.clear();
 		this.logged = 0;
+		//alert('After clear - this.logged: ' + this.logged);
+		//alert('After clear - window.localStorage.getItem(logged): ' + window.localStorage.getItem('logged'));
 		if (typeof window.localStorage.getItem("logged") == 'undefined') { return true } else { return false };
 	};
 	/* End Local Storage */
@@ -198,5 +229,8 @@ function onDeviceReady() {
 };
 
 $(function() {
-    document.addEventListener("deviceready", onDeviceReady, true);       
+    document.addEventListener("deviceready", onDeviceReady, true);
+	
+	/* Only for in-browser (not in Android) testing */
+	onDeviceReady();
 });

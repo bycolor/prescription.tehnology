@@ -30,9 +30,8 @@
 
 		<div class="container wrap">
 			<h1>Order Form</h1>
-			<form id="login-form" action="https://prescription.technology/___include/ajax/ajax.app.regcust.asp" method="get" class="row gutters">
-				<input type="hidden" id="m" name="m" value="0" />
-				<input type="hidden" id="j" name="j" value="1" />
+			<form id="loginform" name="loginform" action="https://prescription.technology/___include/ajax/ajax.app.regcust.asp" method="get" class="row gutters">
+				<!-- input type="hidden" name="sid" value="" /-->
 				<input type="text" id="loginemail" name="loginemail" value="" placeholder="Enter your username" />
 				<input type="password" id="loginpassword" name="loginpassword" value="" placeholder="Enter your username" />
 				<button type="submit" class="btn btn-big has-icon" id="login-submit"><div class="btn-text">Sign in</div><div class="btn-icon"><i class="fa fa-angle-double-right"></i></div></button>
@@ -44,11 +43,10 @@
 			</form>
 		</div>
 		<script type="text/javascript">
-			var oLocalStorage;
-			oLocalStorage = new classLocalStorage();
-
+			var oLocalStorage = new classLocalStorage();
 			function PowerUp() {
-				var $loginForm = $('#login-form');
+				var oLocalStorage = new classLocalStorage();
+				var $loginForm = $('#loginform');
 				var $loginSubmit = $('#login-submit');
 				var $responseHolder = $('#response-holder');
 				var $responseHolder2 = $('#response-holder2');
@@ -58,11 +56,19 @@
 
 				function Login() {
 					$pagePreloader.show();
+					var sid = window.localStorage.getItem('sid');
+					if (typeof sid != 'undefined' && sid !== null) { oLocalStorage.sid = sid; };
 					var jqxhr = $.ajax({
 						type: $loginForm.prop('method'),
 						url: $loginForm.prop('action'),
 						//data: params
 						dataType: 'html',
+						beforeSend: function (request) {
+							if (typeof sid != 'undefined' && sid !== null) {
+								alert('Setting cookie to ' + sid);
+								//request.setRequestHeader("Cookie", sid);
+							}
+						},
 						data: $loginForm.serialize()
 					}).fail(function(response) {
 						// Failure
@@ -80,20 +86,28 @@
 						// Success
 						try {
 							messages = '';
-							alert(response);
+							//console.log('conectare.html - response: ' + response);
 							var json = $.parseJSON(response);
+							//console.log('json: ');
+							//console.log(json);
 							var status = json.status;
 							var message = json.message;
-							if (status == '1') {
+							//console.log('status: ' + status);
+							if (status) {
 								var user = json.user;
 								var order = json.order;
-								if (oLocalStorage.SetLoggedData(json)) {
+								oLocalStorage.SetLoggedData(json);
+								console.log('json: ' + json);
+								//alert('conectare.html 1 - login after SetLoggedData - oLocalStorage.logged: ' + oLocalStorage.logged);
+								if (oLocalStorage.logged == 1) {
+									//alert('logged is true, redirect to index.html');
 									window.location.href = 'index.html';
 								} else {
-									// Error - Saving local storage data
-									//messages += '<p class="alert error">Could not set local storage data.</p>';
+									//alert('logged is false, no redirect');
+									// Error - Reading local storage data
+									messages += '<p class="alert error">Could not read local storage data</p><p class="alert error">' + message + '</p>';
 								}
-								$responseHolder.hide().html(messages).fadeIn('fast');
+								//$responseHolder.hide().html(messages).fadeIn('fast');
 							} else {
 								// Error - Credentials error
 								$responseHolder.hide().html('<p class="alert error">' + message + '</p>').fadeIn('fast');
@@ -123,16 +137,42 @@
 						Login();
 					}
 				});
+				
+				/* Sursa: http://ko-lwin.blogspot.ro/2010/12/how-to-secure-classic-asp-session-id.html */
+				/*
+				function getSessionKey() {
+					var c_name = "ASPSESSIONID";
+					if (document.cookie.length > 0) {
+						c_start = document.cookie.indexOf(c_name);
+						if (c_start!=-1) {
+							c_end=document.cookie.indexOf("=",c_start);
+							if (c_end==-1) c_end=document.cookie.length;
+							return unescape(document.cookie.substring(c_start,c_end));
+						}
+					}
+					return "";
+				}
+
+				function submit() {
+					document.loginform.sessionid.value = getSessionKey();
+					//alert("document.loginform.sessionid.value: " + document.loginform.sessionid.value);
+				}
+				submit();
+				*/
 			};
 
 			$(function() {
-				alert(oLocalStorage.logged);
-				if (oLocalStorage.IsLogged) {
+				//alert('conectare.html 1 - oLocalStorage.logged: ' + oLocalStorage.logged);
+				//alert('conectare.html 1 - !oLocalStorage.logged: ' + (!oLocalStorage.logged));
+				//alert('conectare.html 1 - !oLocalStorage.logged: ' +  (oLocalStorage.logged == 1));
+				oLocalStorage.IsLogged();
+				if (oLocalStorage.logged == 1) {
 					window.location.href = 'index.html';
 				} else {
-					//console.log(oLocalStorage.logged);
-					PowerUp();
-					//document.addEventListener("deviceready", PowerUp, true);
+					document.addEventListener("deviceready", PowerUp, true);
+					
+					/* Only for in-browser (not in Android) testing */
+					//PowerUp();
 				}
 			});
         </script>

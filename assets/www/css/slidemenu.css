@@ -2,7 +2,7 @@ body#slidemenu {
 	width: 100%;
 	background: #005982;
 	color: #fff;
-	height: 10000px;
+	height: auto;
 	overflow: hidden;
 	padding: 1rem;
 }
