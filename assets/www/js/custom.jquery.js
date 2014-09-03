@@ -58,7 +58,7 @@ function onDeviceReady() {
 		if (typeof data.user.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.user.BillZip); };
 		if (typeof data.order.itemscount != 'undefined') { window.localStorage.setItem('itemscount', data.order.itemscount); } else { noError = false; };
 		if (typeof data.order.items != 'undefined') { window.localStorage.setItem('items', data.order.items); } else { noError = false; };
-		window.localStorage.setItem('sid', GetSID);
+		window.localStorage.setItem('sid', this.GetSID);
 		
 		//console.log(data);
 		/* Conditiile ramin SEPARATE! 
@@ -83,6 +83,19 @@ function onDeviceReady() {
 	};
 	
 
+	classLocalStorage.prototype.UpdateInfo = function() {			
+		$('.autoupdate').each(function() {
+			var $this = $(this);			
+			$this.hide();
+			if ($this.is('input') || $this.is('select') || $this.is('textarea')) {
+				$this.val(this[$this.data('term')]);
+			} else {
+				$this.html(this[$this.data('term')]).show();
+			}
+			$this.show();
+		})
+	}
+	
 	classLocalStorage.prototype.SetCurrentOrder = function(oid) {
 		/* Set current order data */
 		var noError = true;

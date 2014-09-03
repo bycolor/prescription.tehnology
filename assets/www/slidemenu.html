@@ -88,24 +88,10 @@
 
 		<script type="text/javascript">
 			var oLocalStorage = new classLocalStorage();
+
 			function PowerUp() {
 				var oLocalStorage = new classLocalStorage();
 				var $shoppingCart = $('#shopping-cart');
-
-				function UpdateInfo() {
-					$('.autoupdate').each(function() {
-						var $this = $(this);
-						//$('#' + this.id).hide().html(oLocalStorage[this.id]).show();
-						
-						$this.hide();
-						if ($this.is('input') || $this.is('select') || $this.is('textarea')) {
-							$this.val(oLocalStorage[$this.data('term')]);
-						} else {
-							$this.html(oLocalStorage[$this.data('term')]).show();
-						}
-						$this.show();
-					})
-				}
 				
 				$('#manually-pull').on('touchstart click', function(e) {
 					e.preventDefault();
@@ -114,7 +100,7 @@
 					//alert(oLocalStorage.logged);
 					if (oLocalStorage.logged == 1) {
 						oLocalStorage.GetLoggedData();
-						UpdateInfo();
+						oLocalStorage.UpdateInfo();
 						alert('oLocalStorage.username 1: ' + oLocalStorage.username);
 						alert('oLocalStorage.itemscount 1: ' + oLocalStorage.itemscount);
 						alert('oLocalStorage.firstname 1: ' + oLocalStorage.firstname);
@@ -133,7 +119,7 @@
 					alert('LOGGEDIN event fired, now lets start populate slidemenu');
 					if (oLocalStorage.logged == 1) {
 						oLocalStorage.GetLoggedData();
-						UpdateInfo();
+						oLocalStorage.UpdateInfo();
 						//alert('oLocalStorage.username2: ' + oLocalStorage.username);
 						//alert('oLocalStorage.itemscount 2: ' + oLocalStorage.itemscount);
 						//alert('oLocalStorage.items 2: ' + oLocalStorage.items);
