@@ -58,7 +58,7 @@ function onDeviceReady() {
 		if (typeof data.user.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.user.BillZip); };
 		if (typeof data.order.itemscount != 'undefined') { window.localStorage.setItem('itemscount', data.order.itemscount); } else { noError = false; };
 		if (typeof data.order.items != 'undefined') { window.localStorage.setItem('items', data.order.items); } else { noError = false; };
-		window.localStorage.setItem('sid', this.GetSID);
+		window.localStorage.setItem('sid', this.GetSID());
 		
 		//console.log(data);
 		/* Conditiile ramin SEPARATE! 
@@ -83,14 +83,17 @@ function onDeviceReady() {
 	};
 	
 
-	classLocalStorage.prototype.UpdateInfo = function() {			
+	classLocalStorage.prototype.UpdateInfo = function() {
+		var _this = this;
 		$('.autoupdate').each(function() {
 			var $this = $(this);			
 			$this.hide();
+			//alert('UpdateInfo - $this.data(term): ' + $this.data('term'));
+			//alert('UpdateInfo - _this[$this.data(term)]: ' + _this[$this.data('term')]);
 			if ($this.is('input') || $this.is('select') || $this.is('textarea')) {
-				$this.val(this[$this.data('term')]);
+				$this.val(_this[$this.data('term')]);
 			} else {
-				$this.html(this[$this.data('term')]).show();
+				$this.html(_this[$this.data('term')]).show();
 			}
 			$this.show();
 		})
@@ -161,6 +164,7 @@ function onDeviceReady() {
 				if (c_end==-1) c_end=document.cookie.length;
 				return unescape(document.cookie.substring(c_start,c_end));
 			}
+			return "";
 		}
 		return "";
 	}
@@ -209,7 +213,7 @@ function onDeviceReady() {
 
 		/* Check if saved local storage userData is ok */
 		console.log('GetLoggedData - this.username: ' + this.username);
-		console.log('GetLoggedData - this.items: ' + this.items);
+		//console.log('GetLoggedData - this.items: ' + this.items);
 		console.log('GetLoggedData - this.sid: ' + this.sid);
 		if (typeof this.username == 'undefined') { this.ClearSession(); return false; };
 		if (typeof this.items == 'undefined') { this.ClearSession(); return false; };
