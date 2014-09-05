@@ -31,6 +31,7 @@ function onDeviceReady() {
 		/* Set data */
 		var noError = true;
 		if (typeof data == 'undefined') { noError = false; };
+		if (typeof data.user == 'undefined') { noError = false; };
 		if (typeof data.user.username != 'undefined') { window.localStorage.setItem('username', data.user.username); } else { noError = false; };
 		if (typeof data.user.firstname != 'undefined') { window.localStorage.setItem('firstname', data.user.firstname); };
 		if (typeof data.user.lastname != 'undefined') { window.localStorage.setItem('lastname', data.user.lastname); };
@@ -58,6 +59,9 @@ function onDeviceReady() {
 		if (typeof data.user.BillZip != 'undefined') { window.localStorage.setItem('BillZip', data.user.BillZip); };
 		if (typeof data.order.itemscount != 'undefined') { window.localStorage.setItem('itemscount', data.order.itemscount); } else { noError = false; };
 		if (typeof data.order.items != 'undefined') { window.localStorage.setItem('items', data.order.items); } else { noError = false; };
+		alert('Urmeaza this.GetSID()');
+		alert(this.GetSID());
+		window.localStorage.setItem('sidname', this.GetSID());
 		window.localStorage.setItem('sid', this.GetSID());
 		
 		//console.log(data);
@@ -70,9 +74,8 @@ function onDeviceReady() {
 		//console.log(data.order);
 		//alert('SetLoggedData - data.order.itemscount: ' + data.order.itemscount);
 		//alert('SetLoggedData - data.order.items: ' + data.order.items);
-		//alert('SetLoggedData - data.sid: ' + data.sid);
-		//alert('SetLoggedData - noError: ' + noError);
-		//alert('SetLoggedData - this.logged: ' + this.logged);
+		alert('SetLoggedData - noError: ' + noError);
+		alert('SetLoggedData - this.logged: ' + this.logged);
 		if (this.GetLoggedData()) {
 			this.logged = 1;
 		}
@@ -82,14 +85,80 @@ function onDeviceReady() {
 		return this.logged;
 	};
 	
+	classLocalStorage.prototype.RetrieveData = function() {
+		var $responseHolder = $('#response-holder');
+		var $responseHolder2 = $('#response-holder2');
+		var sidname = window.localStorage.getItem('sidname');
+		var sid = window.localStorage.getItem('sid');
+		var _this = this;
+		if (typeof sidname != 'undefined' && sidname !== null) { _this.sidname = sidname; };
+		if (typeof sid != 'undefined' && sid !== null) { _this.sid = sid; };
+		var jqxhr = $.ajax({
+			//type: $loginForm.prop('method'),
+			//url: $loginForm.prop('action'),
+			type: 'get',
+			url: 'https://prescription.technology/___include/ajax/ajax.app.regcust.asp',
+			dataType: 'html',
+			beforeSend: function (request) {
+				if (typeof _this.sidname != 'undefined' && _this.sidname !== null && typeof _this.sid != 'undefined' && _this.sid !== null) {
+					alert('custom.jquery.js - Setting cookie ' + _this.sidname + ' to ' + _this.sid);
+					console.log('custom.jquery.js - _this ');
+					console.log(_this);
+					//request.setRequestHeader("Cookie", sid);
+				}
+			},
+			data: 'loginemail=georgescu_bogdan@hotmail.com&loginpassword=12345'
+		}).fail(function(response) {
+			// Failure
+			var json = $.parseJSON(response);
+			var status = json.status;
+			var message = json.message;
 
-	classLocalStorage.prototype.UpdateInfo = function() {
+			var messages = ''
+							+ '<p class="alert error">status: ' + status + '</p>'
+							+ '<p class="alert error">message: ' + message + '</p>'
+							;
+			$responseHolder.append(messages).show();
+			_this.ClearSession();
+		}).done(function(response) {
+			// Success
+			try {
+				messages = '';
+				var json = $.parseJSON(response);
+				var status = json.status;
+				var message = json.message;
+				alert('RetrieveData - json: ' + json);
+				if (status) {
+					var user = json.user;
+					var order = json.order;
+					_this.SetLoggedData(json);
+					if (_this.logged == 1) {
+						return true;
+					} else {
+						// Error - Reading local storage data
+						messages += '<p class="alert error">Could not read local storage data</p><p class="alert error">' + message + '</p>';
+					}
+				} else {
+					// Error - Credentials error
+					$responseHolder.hide().html('<p class="alert error">' + message + '</p>').fadeIn('fast');
+					_this.ClearSession();
+				}
+			} catch (err) {
+				// Error - Misc
+				messages = '<p class="alert error">Call succceeded, but parsing got an error: ' + err.message + '.</p>';
+				$responseHolder.hide().html(messages).fadeIn('fast');
+				$responseHolder2.hide().html('<p class="alert error">response: ' + response + '</p>').fadeIn('fast');
+			}
+			return false;
+		});
+		return false;
+	};
+
+	classLocalStorage.prototype.UpdatePageElements = function() {
 		var _this = this;
 		$('.autoupdate').each(function() {
 			var $this = $(this);			
 			$this.hide();
-			//alert('UpdateInfo - $this.data(term): ' + $this.data('term'));
-			//alert('UpdateInfo - _this[$this.data(term)]: ' + _this[$this.data('term')]);
 			if ($this.is('input') || $this.is('select') || $this.is('textarea')) {
 				$this.val(_this[$this.data('term')]);
 			} else {
@@ -157,6 +226,8 @@ function onDeviceReady() {
 	/* Sursa: http://ko-lwin.blogspot.ro/2010/12/how-to-secure-classic-asp-session-id.html */
 	classLocalStorage.prototype.GetSID = function() {
 		var c_name = "ASPSESSIONID";
+		console.log('document.cookie: ');
+		console.log(document.cookie);
 		if (document.cookie.length > 0) {
 			c_start = document.cookie.indexOf(c_name);
 			if (c_start!=-1) {
@@ -198,6 +269,7 @@ function onDeviceReady() {
 		this.itemscount = window.localStorage.getItem('itemscount');
 		this.items = window.localStorage.getItem('items');
 		//this.logged = window.localStorage.getItem('logged');
+		this.sidname = window.localStorage.getItem('sidname');
 		this.sid = window.localStorage.getItem('sid');
 
 		/*
@@ -212,11 +284,9 @@ function onDeviceReady() {
 		
 
 		/* Check if saved local storage userData is ok */
-		console.log('GetLoggedData - this.username: ' + this.username);
-		//console.log('GetLoggedData - this.items: ' + this.items);
-		console.log('GetLoggedData - this.sid: ' + this.sid);
 		if (typeof this.username == 'undefined') { this.ClearSession(); return false; };
 		if (typeof this.items == 'undefined') { this.ClearSession(); return false; };
+		if (typeof this.sidname == 'undefined') { this.ClearSession(); return false; };
 		if (typeof this.sid == 'undefined') { this.ClearSession(); return false; };
 		
 		messages += '<p class="error">2 window.localStorage.getItem firstname: ' + window.localStorage.getItem('firstname') + '</p>'

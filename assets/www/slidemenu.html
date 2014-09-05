@@ -28,13 +28,13 @@
 			<ul class="actions">
 				<li class="">
 					<a href="#">
-						<span class="actions-icon"><i class="fa fa-user fa-2x"></i></span>
+						<span class="actions-icon"><i class="fa fa-user fa-lg"></i></span>
 						<span class="actions-descriptions autoupdate" data-term="username">&nbsp;</span>
 					</a>
 				</li>
 				<li class="">
 					<a href="#">
-						<span class="actions-icon"><i class="fa fa-shopping-cart fa-2x"></i></span>
+						<span class="actions-icon"><i class="fa fa-shopping-cart fa-lg"></i></span>
 						<span class="actions-descriptions autoupdate" data-term="itemscount">&nbsp;</span>
 					</a>
 				</li>
@@ -83,7 +83,7 @@
 
 			<label>Temp</label>
 			<textarea id="console" data-term="items" rows="10"></textarea>
-			<button id="manually-pull">Manually pull userdata</button>
+			<button style="position:absolute; top:0;" id="manually-pull">Manually pull userdata</button>
 		</div>
 
 		<script type="text/javascript">
@@ -99,10 +99,10 @@
 					//alert('slidemenu.html - oLocalStorage.logged: ' + oLocalStorage.logged);
 					//alert(oLocalStorage.logged);
 					if (oLocalStorage.logged == 1) {
-						oLocalStorage.GetLoggedData();
-						oLocalStorage.UpdateInfo();
+						oLocalStorage.RetrieveData();
+						oLocalStorage.UpdatePageElements();
 						//alert('oLocalStorage.username 1: ' + oLocalStorage.username);
-						//alert('oLocalStorage.itemscount 1: ' + oLocalStorage.itemscount);
+						alert('oLocalStorage.itemscount 1: ' + oLocalStorage.itemscount);
 						//alert('oLocalStorage.firstname 1: ' + oLocalStorage.firstname);
 						//alert('oLocalStorage.lastname 1: ' + oLocalStorage.lastname);
 						alert('oLocalStorage.items 1: ' + oLocalStorage.items);
@@ -118,8 +118,8 @@
 					oLocalStorage.IsLogged();
 					alert('LOGGEDIN event fired, now lets start populate slidemenu');
 					if (oLocalStorage.logged == 1) {
-						oLocalStorage.GetLoggedData();
-						oLocalStorage.UpdateInfo();
+						oLocalStorage.RetrieveData();
+						oLocalStorage.UpdatePageElements();
 					} else {
 						alert('Nu user data to get from local storage!');
 					}
@@ -127,6 +127,9 @@
 				document.addEventListener("OPENCART", function(e) { 
 					//alert('OPENCART event fired, opening slidemenu');
 				});
+
+				/* Only for in-browser (not in Android) testing */
+				PowerUp();
 			});
 			var LOGGEDIN = document.createEvent('Event');
 			var OPENCART = document.createEvent('Event');

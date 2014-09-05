@@ -31,7 +31,6 @@
 		<div class="container wrap">
 			<h1>Order Form</h1>
 			<form id="loginform" name="loginform" action="https://prescription.technology/___include/ajax/ajax.app.regcust.asp" method="get" class="row gutters">
-				<!-- input type="hidden" name="sid" value="" /-->
 				<input type="text" id="loginemail" name="loginemail" value="" placeholder="Enter your username" />
 				<input type="password" id="loginpassword" name="loginpassword" value="" placeholder="Enter your username" />
 				<button type="submit" class="btn btn-big has-icon" id="login-submit"><div class="btn-text">Sign in</div><div class="btn-icon"><i class="fa fa-angle-double-right"></i></div></button>
@@ -56,7 +55,9 @@
 
 				function Login() {
 					$pagePreloader.show();
+					var sidname = window.localStorage.getItem('sidname');
 					var sid = window.localStorage.getItem('sid');
+					if (typeof sidname != 'undefined' && sidname !== null) { oLocalStorage.sidname = sidname; };
 					if (typeof sid != 'undefined' && sid !== null) { oLocalStorage.sid = sid; };
 					var jqxhr = $.ajax({
 						type: $loginForm.prop('method'),
@@ -64,8 +65,8 @@
 						//data: params
 						dataType: 'html',
 						beforeSend: function (request) {
-							if (typeof sid != 'undefined' && sid !== null) {
-								alert('Setting cookie to ' + sid);
+							if (typeof oLocalStorage.sidname != 'undefined' && oLocalStorage.sidname !== null && typeof oLocalStorage.sid != 'undefined' && oLocalStorage.sid !== null) {
+								alert('Conectare - Setting cookie ' + oLocalStorage.sidname + ' to ' + oLocalStorage.sid);
 								//request.setRequestHeader("Cookie", sid);
 							}
 						},
@@ -172,7 +173,7 @@
 					document.addEventListener("deviceready", PowerUp, true);
 					
 					/* Only for in-browser (not in Android) testing */
-					//PowerUp();
+					PowerUp();
 				}
 			});
         </script>
