@@ -306,8 +306,6 @@ function onDeviceReady() {
 		/* Clear everything */
 		window.localStorage.clear();
 		this.logged = 0;
-		//alert('After clear - this.logged: ' + this.logged);
-		//alert('After clear - window.localStorage.getItem(logged): ' + window.localStorage.getItem('logged'));
 		if (typeof window.localStorage.getItem("logged") == 'undefined') { return true } else { return false };
 	};
 	/* End Local Storage */
