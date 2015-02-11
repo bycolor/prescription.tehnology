@@ -70,6 +70,7 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         //searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
         return true;
     }
 
@@ -80,10 +81,7 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
         //<editor-fold desc="left_menuEventsHandler">
         LEFT_MENU_BROADCAST_RECEIVER br = new LEFT_MENU_BROADCAST_RECEIVER();
         map.put("LEFT_MENU_BROADCAST_RECEIVER", br);
-        //</editor-fold>
-
-        //<editor-fold desc="drawerEventsHandler">
-        BroadcastReceiver drawerEventHandler = new BroadcastReceiver() {
+        BroadcastReceiver drawer = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.hasExtra("open")) {
@@ -96,45 +94,8 @@ public class Index extends PrescriptionTechnologyWithNavigationDrawer {
                     mDrawerLayout.closeDrawer(Gravity.LEFT);
             }
         };
-        map.put("DRAWER", drawerEventHandler);
-        //</editor-fold>
-
-        //<editor-fold desc="loginCompletedEventHandler">
-        BroadcastReceiver loginCompletedEventHandler = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.hasExtra("TOKEN")) {
-                    mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    appView.loadUrlIntoView(Constants.assets.index);
-                    WebViewInterface webViewInterface = new WebViewInterface(context);
-                    webViewInterface.sendMessage("updatecartEvent", "left_menu");
-                    PopulateLeftMenu();
-                    appView.clearHistory();
-                    //mDrawerLayout.openDrawer(Gravity.LEFT);
-                } else
-                    appView.sendJavascript("OnloginErrorEventHandler();");
-            }
-        };
-        map.put("LOGIN_COMPLETED", loginCompletedEventHandler);
-        //</editor-fold>
-
-        //<editor-fold desc="loadurlintoMainWebViewEventHandler">
-        BroadcastReceiver LoadURLEventHandler = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.hasExtra("page")) {
-                    String page = intent.getStringExtra("page");
-                    if (!page.contains("file:///android_asset/www/"))
-                        appView.loadUrl("file:///android_asset/www/" + page);
-                    else
-                        appView.loadUrl(page);
-                }
-            }
-        };
-        map.put("LoadURLEventHandler", LoadURLEventHandler);
-        //</editor-fold>
+        map.put("DRAWER", drawer);
         return map;
     }
-
 
 }

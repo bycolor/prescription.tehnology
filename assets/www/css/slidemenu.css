@@ -1,129 +1,80 @@
 body#slidemenu {
-    width: 100%;
-    background: #005982;
-    color: #fff;
-    height: 10000px;
-    overflow: hidden;
-    padding: 1rem;
+	width: 100%;
+	background: #005982;
+	color: #fff;
+	height: 10000px;
+	overflow: hidden;
+	padding: 1rem;
 }
+	#slidemenu h1,
+	#slidemenu h2 {
+		color: #fff;
+		margin-top: 3rem;
+	}
+	#slidemenu h2 {
+		font-size: 1.50em;
+	}
+	#holder-languages {
+		margin-bottom: 2rem;
+	}
+		.language-flag {
+			width: 45px;
+			height: 29px;
+		}
+		.language-flag.selected {
+			filter:alpha(opacity=100);
+			-moz-opacity:1;
+			-khtml-opacity: 1;
+			opacity: 1;
+		}
+	.actions {
+	}
+		.actions li {
+			margin-bottom: 1px;
+		}
+			.actions li a {
+				display: block;
+				color: #fff;
+			}
+			.actions li a span {
+				background: #167698;
+				padding: 1.5rem;
+				display: block;
+				width: 100%;
+				height: 4.5rem;
+				text-align: left;
+			}
+			.actions li a span.actions-icon {
+				float: left;
+				padding: 1.2rem 1.5rem;
+				text-align: center;
+				width: 5rem;
+				border-right: 1px solid #005982;
+			}
+				.actions li a i {
+					color: #ec9062;
+				}
 
-#slidemenu h1,
-#slidemenu h2 {
-    color: #fff;
-    margin-top: 3rem;
-}
-
-#slidemenu h2 {
-    font-size: 1.50em;
-}
-
-#holder-languages {
-    margin-bottom: 2rem;
-}
-
-.language-flag {
-    width: 45px;
-    height: 29px;
-}
-
-    .language-flag.selected {
-        filter: alpha(opacity=100);
-        -moz-opacity: 1;
-        -khtml-opacity: 1;
-        opacity: 1;
-    }
-
-.actions {
-}
-
-    .actions li {
-        margin-bottom: 1px;
-    }
-
-        .actions li a {
-            display: block;
-            color: #fff;
-        }
-
-            .actions li a .actions-descriptions {
-                background: #167698;
-                padding: 1.5rem;
-                display: block;
-                width: 100%;
-                height: 4.5rem;
-                text-align: left;
-            }
-
-            .actions li a .actions-icon {
-                background: #167698;
-                display: block;
-                float: left;
-                padding: 1.2rem 1.5rem;
-                text-align: center;
-                width: 5rem;
-                height: 4.5rem;
-                border-right: 1px solid #005982;
-            }
-
-            .actions li a .address-description {
-                background: #167698;
-                padding: 1.5rem;
-                display: block;
-                width: 100%;
-                height: 10rem;
-                text-align: left;
-            }
-
-            .actions li a .address-icon {
-                background: #167698;
-                display: block;
-                float: left;
-                padding-top: 1.5rem;
-                text-align: center;
-                width: 5rem;
-                height: 10rem;
-                border-right: 1px solid #005982;
-            }
-
-                .actions li a .address-icon b {
-                    display: block;
-                    text-align: center;
-                    font-size: smaller;
-                }
-
-            .actions li a .address-description b {
-                font-weight: bold;
-            }
-
-            .actions li a i {
-                color: #ec9062;
-            }
-
-#shopping-cart li {
-    color: #fff;
-    margin-bottom: 1px;
-    padding: 1rem 1.5rem;
-    background: #2397ab;
-}
-
-    #shopping-cart li:nth-child(5n) {
-        background: #1685a1;
-    }
-
-    #shopping-cart li div {
-        display: block;
-        color: #fff;
-        font-weight: 300;
-        padding: .3rem 0;
-    }
-
-        #shopping-cart li div > span:nth-child(2n) {
-            font-size: 1.3em;
-        }
-
-        #shopping-cart li div span.item,
-        #shopping-cart li div span.subtotal {
-            font-weight: 600;
-        }
-
-.
+	#shopping-cart li {
+		color: #fff;
+		margin-bottom: 1px;
+		padding: 1rem 1.5rem;
+		background: #2397ab;
+	}
+	#shopping-cart li:nth-child(5n) {
+		background: #1685a1;
+	}
+		#shopping-cart li a {
+			display: block;
+			color: #fff;
+			font-weight: 300;
+			padding: .3rem 0;
+		}
+			#shopping-cart li a > span:nth-child(2n) {
+				font-size: 1.3em;
+			}
+			#shopping-cart li a span.item,
+			#shopping-cart li a span.subtotal {
+				font-weight: 600;
+			}
+	.
