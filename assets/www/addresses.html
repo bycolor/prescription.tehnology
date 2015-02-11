@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body id="addresses">
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
+            <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
+        </div>
+    </div>
+</div>
+<div class="container wrap">
+    <h1 id="title-info"></h1>
+
+    <div id="addresses-superHolder col span_24">
+        <div id="addresses-holder" class="col span_24">
+            <div class="col span_24 clonable">
+                <div class="col span_3">
+                    <input type="radio" name="addr"/>
+                </div>
+                <div class="col span_21 address-description">
+                    <b>Address:</b>&nbsp;<span class="autoupdate" data-term="address"></span>&nbsp;
+                    <b>City:</b><span class="autoupdate" data-term="city"></span>&nbsp;<b>State:</b><span
+                        class="autoupdate" data-term="state"></span>&nbsp;
+                    <b>Country:</b><span class="autoupdate" data-term="country"></span>&nbsp;<b>Zip:</b><span
+                        class="autoupdate" data-term="zip"></span>&nbsp;
+                    <b>Day phone:</b><span class="autoupdate" data-term="dayphone"></span>&nbsp;<b>Night phone:</b><span
+                        class="autoupdate" data-term="nightphone"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col span_24">
+            <a href="#" id="add-address">Add</a>
+        </div>
+    </div>
+    <h1>Payment Methods</h1>
+
+    <div id="payment-methods-holder">
+        <div class="col span_24 clonable">
+            <div class="col span_3">
+                <input type="radio" name="payment_method"/>
+            </div>
+            <div class="col span_21 address-description">
+                <div class="col span3"></div>
+                <div class="col span_21">
+                    <b>Pay Code:</b>&nbsp;<span class="autoupdate" data-term="paycode"></span>&nbsp;
+                    <b>Payment Name:</b>&nbsp;<span class="autoupdate" data-term="paymentname"></span>&nbsp;
+                    <b>Pay type:</b><span class="autoupdate" data-term="paytype"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        var oLocalStorage = new classLocalStorage();
+        function PowerUp() {
+            var $addressesHolder = $('#addresses-holder');
+            var $pagePreloader = $('#page-preloader');
+            var $editlnkBtn = $('#add-address');
+            var $titleInfo = $('#title-info');
+            var $paymentMethodsHolder = $('#payment-methods-holder');
+            if (!isFromCache()) {
+                $pagePreloader.show();
+                var addresses = JSON.parse(prescription.addresses().getAddresses());
+                var type = window.location.href.substring(window.location.href.indexOf('?type=') + 6, window.location.href.length);
+                if (typeof type !== "undefined" && type !== "") {
+                    switch (type) {
+                        case "shipping":
+                            $titleInfo.text('Shipping addresses');
+                            $editlnkBtn.text($editlnkBtn.text() + ' new shipping address');
+                            var shippingAddrs = addresses.shipping;
+                            for (var i = 0; i < shippingAddrs.length; i++) {
+                                var shipAddr = shippingAddrs[i];
+                                var $clone = $addressesHolder.find('.clonable').clone(true);
+                                if (shipAddr.selected === "True") {
+                                    $clone.find('input[type=radio]').prop('checked', true);
+                                }
+                                $clone.attr('id', $clone.attr + shipAddr.addrkey);
+                                oLocalStorage.UpdatePageElements(shipAddr, $clone);
+                                $clone.removeClass('clonable');
+                                $addressesHolder.append($clone);
+                            }
+                            break;
+                        case "billing":
+                            $titleInfo.text('Billing addresses');
+                            $editlnkBtn.text($editlnkBtn.text() + ' new billing address');
+                            var billingAddrs = addresses.billing;
+                            console.log(billingAddrs.length);
+                            for (var i = 0; i < billingAddrs.length; i++) {
+                                var billAddr = billingAddrs[i];
+                                var $clone = $addressesHolder.find('.clonable').clone(true);
+                                if (billAddr.selected === "True") {
+                                    console.log('selected');
+                                    $clone.find('input[type=radio]').prop('checked', true);
+                                }
+                                $clone.attr('id', $clone.attr + billAddr.addrkey);
+                                oLocalStorage.UpdatePageElements(billAddr, $clone);
+                                $clone.removeClass('clonable');
+                                $addressesHolder.append($clone);
+                            }
+                            break;
+
+                    }
+                    //show payment methods
+                    var methods = addresses.paymentmethods;
+                    for (var i = 0; i < methods.length; i++) {
+                        var method = methods[i];
+                        var $clone = $paymentMethodsHolder.find('.clonable').clone(true);
+                        oLocalStorage.UpdatePageElements(method, $clone);
+                        $clone.removeClass('clonable');
+                        $paymentMethodsHolder.append($clone);
+                    }
+                }
+                $pagePreloader.hide();
+            }
+        }
+        document.addEventListener("deviceready", PowerUp, false);        
+
+
+</script>
+</body>
+</html>

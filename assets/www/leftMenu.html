@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Slide Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/slidemenu.css" media="screen"/>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body class="left-menu">
+<div id="holder-languages">
+    <a href="#" class="language-flag english selected">&nbsp;</a>
+    <a href="#" class="language-flag german">&nbsp;</a>
+    <a href="#" class="language-flag dutch">&nbsp;</a>
+    <a href="#" class="language-flag french">&nbsp;</a>
+    <a href="#" class="language-flag spanish">&nbsp;</a>
+</div>
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+
+<div id="holder-account-info">
+    <form id="addresses-form" action="https://prescription.technology/ws/prescription.asp" method="post">
+        <input type="hidden" id="action" name="action" value="3"/>
+        <ul class="clonable">
+            <li id="addr-">
+                <a href="#">
+                    <span class="address-icon"><i class="fa fa-map-marker fa-2x"></i><b></b></span>
+
+                    <div class="address-description">
+                        <p>
+                            <b>Address:</b>&nbsp;<span class="autoupdate" data-term="address"></span>
+                        </p>
+
+                        <p>
+                            <b>City:</b><span class="autoupdate" data-term="city"></span>
+                        </p>
+
+                        <p>
+                            <b>State:</b><span class="autoupdate" data-term="state"></span>
+                        </p>
+                        <!--<b>Country:</b><span class="autoupdate" data-term="country"></span>&nbsp;<b>Zip:</b><span class="autoupdate" data-term="zip"></span>&nbsp;
+                        <b>Day phone:</b><span class="autoupdate" data-term="dayphone"></span>&nbsp;<b>Night phone:</b><span class="autoupdate" data-term="nightphone"></span>-->
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </form>
+    <h1>
+        <span class="autoupdate" data-term="firstname"></span>&nbsp;<span class="autoupdate"
+                                                                          data-term="lastname"></span>
+    </h1>
+    <ul class="actions">
+        <li class="">
+            <a id="account-username" href="account_info.html">
+                <span class="actions-icon"><i class="fa fa-user fa-2x"></i></span>
+                <span class="actions-descriptions autoupdate" data-term="username">&nbsp;</span>
+            </a>
+        </li>
+        <li class="">
+            <a id="shopping-cart-count" href="shopping_cart.html">
+                <span class="actions-icon"><i class="fa fa-shopping-cart fa-2x"></i></span>
+                <span class="actions-descriptions autoupdate" id="productcount">No products yet</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<!--<div id="holder-shopping-cart">
+    <div></div>
+    <ul id="shopping-cart">
+        <li class="clonable">
+            <div class="row gutters">
+                <span class="col span_4">Item</span>
+                <span class="col span_20 item"><strong class="autoupdate" data-term="productname"></strong></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Item price</span>
+                <span class="col span_20 itemprice autoupdate" data-term="productprice"></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Quantity</span>
+                <span class="col span_20"><select class="quantity"></select></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Subtotal</span>
+                <span class="col span_20 subtotal autoupdate" data-term="productsubtotal"></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Actions</span>
+                <span class="col span_20"><a href="#" style="color:#ff0000" class="remove-item">Remove</a></span>
+            </div>
+        </li>
+    </ul>
+</div>-->
+
+<script type="text/javascript">
+        var LOGGEDIN = document.createEvent('Event');
+        var updatecartEvent = document.createEvent('Event');
+        var oLocalStorage;
+        var $holderAccountInfo;
+        var $addressesform;
+        var $actionsPanel;
+        var $pagePreloader;
+        var $shoppingCartCount;
+        updatecartEvent.initEvent('updatecart', true, true);
+        LOGGEDIN.initEvent('LOGGEDIN', true, true);
+        document.addEventListener("deviceready", PowerUp, true);
+        document.addEventListener("LOGGEDIN", UpdateInfo, true);
+        document.addEventListener("updatecart", UpdateCart, true);
+        function PowerUp() {
+            oLocalStorage = new classLocalStorage();
+            $holderAccountInfo = $('#holder-account-info');
+            $shoppingCartCount = $('#shopping-cart-count');
+            $addressesform = $('#addresses-form');
+            $actionsPanel = $holderAccountInfo.find('ul.actions');
+            $pagePreloader = $('#page-preloader');
+            if (!isFromCache()) {
+                UpdateInfo();
+                UpdateCart();
+            }
+            $(document).on('click', '.actions a', function (e) {
+                e.preventDefault();
+                prescription.loadUrlIntoMainWebView($(this).attr('href'));
+                prescription.OnDrawerAction("close");
+            });
+        };
+        function UpdateInfo() {
+            var loggedUser = prescription.auth().getLoggedUser();
+            if (typeof loggedUser !== "undefined") {
+                $pagePreloader.show();
+                var user = JSON.parse(loggedUser);
+                oLocalStorage.UpdatePageElements(user, $holderAccountInfo);
+                var $clonableHolder = $addressesform.find('ul.clonable');
+                $addressesform[0].autoSubmit(function (result) {
+                    //save addresses to local prefs
+                    prescription.addresses().saveAddresses(JSON.stringify(result));
+                    //get shipping and billing addresses and add those selected in actions panel.Click on address to go in main webview and change/add new address
+                    var shipping = result.shipping;
+                    var billing = result.billing;
+                    for (var i = 0; i < shipping.length; i++) {
+                        var shipAddr = shipping[i];
+                        if (shipAddr.selected === "True") { //add only selected address to actions panel
+                            var $clone = $clonableHolder.find('li#addr-').clone(true);
+                            //alert(shipAddr.addrkey);
+                            $clone.attr('id', $clone.attr + shipAddr.addrkey);
+                            $clone.find('.address-icon b').html("Shipping");
+                            var $lnk = $clone.find('a');
+                            $lnk.attr('href', "addresses.html?type=shipping");
+                            oLocalStorage.UpdatePageElements(shipAddr, $clone);
+                            $actionsPanel.append($clone);
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < billing.length; i++) {
+                        var billAddr = billing[i];
+                        if (billAddr.selected === "True") { //add only selected address to actions panel
+                            var $clone = $clonableHolder.find('li').clone(true);
+                            //alert(billAddr.addrkey);
+                            $clone.attr('id', $clone.attr + billAddr.addrkey);
+                            $clone.find('.address-icon b').html("Billing");
+                            var $lnk = $clone.find('a');
+                            $lnk.attr('href', "addresses.html?type=billing");
+                            oLocalStorage.UpdatePageElements(billAddr, $clone);
+                            $actionsPanel.append($clone);
+                            break;
+                        }
+                    }
+                    $pagePreloader.hide();
+                });
+            } else {
+                //redirect to login
+            }
+
+        };
+        function UpdateCart() {
+            $pagePreloader.show();
+            console.log('updatecart event fired'); //debug: show me when this event is trriggered
+            //get cart content
+            var jcart = prescription.cart().getCartContent();
+            if (typeof jcart !== "undefined") {
+                var cart = JSON.parse(jcart);
+                if (cart.length > 0) {
+                    $('#productcount').text("You have " + cart.length + " items in your Shopping Cart");
+                    //$noItemsItem.css('display', 'none');
+                    //for (var i = 0; i < cart.length; i++) {
+                    //    //alert(i);
+                    //    var product = cart[i];
+                    //    var $clone = $shoppingCart.find('li.clonable').clone(true);
+                    //    //$clone.prop('id', 'item-' + product.productid);
+                    //    $clone.find('.remove-item').attr('data-productid', product.productid);
+                    //    oLocalStorage.UpdatePageElements(product, $clone);
+                    //    var $quantityDropDown = $clone.find('select.quantity');
+                    //    for (var j = 1; j <= product.productmaxquantity; j++) {
+                    //        var $opt = $('<option></option>').val(j).text(j);
+                    //        $quantityDropDown.append($opt);
+                    //    }
+                    //    $clone.removeClass('clonable');
+                    //    $shoppingCart.append($clone);
+                    //}
+                } else {
+                    //$noItemsItem.css('display', 'block');
+                }
+            } else {
+                //$noItemsItem.css('display', 'block');
+            }
+            $pagePreloader.hide();
+        };
+
+
+
+</script>
+
+</body>
+</html>

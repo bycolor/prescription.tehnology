@@ -1,31 +1,13 @@
 package prescription.technology.code;
 
-import android.webkit.JavascriptInterface;
-
 public class Constants {
 
-    public final String CUSTOMER_ADDRESS_ACTIVITY = "prescription.technology.CUSTOMER_ADDRESS";
-    public final String CUSTOMER_PERSONAL_INFO_ACTIVITY = "prescription.technology.CUSTOMER_PERSONAL_INFO";
-    public final String ORDER_CONFIRMARTION_ACTIVITY = "prescription.technology.ORDER_CONFIRMATION";
-    public final String QUESTIONS_ACTIVITY = "prescription.technology.QUESTIONS";
-
-    @JavascriptInterface
-    public final String getCUSTOMER_ADDRESS_ACTIVITY() {
-        return CUSTOMER_ADDRESS_ACTIVITY;
-    }
-
-    @JavascriptInterface
-    public final String getCUSTOMER_PERSONAL_INFO_ACTIVITY() {
-        return CUSTOMER_PERSONAL_INFO_ACTIVITY;
-    }
-
-    @JavascriptInterface
-    public final String getORDER_CONFIRMARTION_ACTIVITY() {
-        return ORDER_CONFIRMARTION_ACTIVITY;
-    }
-
-    @JavascriptInterface
-    public final String getQUESTIONS_ACTIVITY() {
-        return QUESTIONS_ACTIVITY;
+    public static class assets {
+        public static final String index = "file:///android_asset/www/index.html";
+        public static final String addresses = "file:///android_asset/www/addresses.html";
+        public static final String conectare = "file:///android_asset/www/conectare.html";
+        public static final String leftMenu = "file:///android_asset/www/leftMenu.html";
+        public static final String shopping_cart = "file:///android_asset/www/shopping_cart.html";
+        public static final String questions = "file:///android_asset/www/questions.html";
     }
 }

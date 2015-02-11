@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import prescription.technology.R;
 import prescription.technology.code.PrescriptionTechnologyWithNavigationDrawer;
+import prescription.technology.code.webview.CustomCordovaWebView;
+import prescription.technology.code.webview.WebViewInterface;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class Adapter extends ArrayAdapter<Item> {
 
     public Adapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
+        internal_context = (PrescriptionTechnologyWithNavigationDrawer) context;
     }
 
     public Adapter(Context context, int resource, List<Item> items) {
@@ -39,13 +42,31 @@ public class Adapter extends ArrayAdapter<Item> {
             v = vi.inflate(R.layout.left_drawer_item, null);
         }
         if (p != null) {
+            if (p.getTag() == null) { //prevent view reloading on scroll and orientation changes
+                CustomCordovaWebView cordovaWebView = (CustomCordovaWebView) v.findViewById(R.id.cordova_left_item_webview);
+                if (cordovaWebView != null) {
+                    Log.v(TAG, "LOAD URL FOR:" + p.Id);
+                    WebViewInterface webViewInterface = new WebViewInterface(internal_context);
+                    cordovaWebView.addJavascriptInterface(webViewInterface, "prescription");
+                    cordovaWebView.getSettings().setJavaScriptEnabled(true);
+                    cordovaWebView.loadUrl(p.Href);
+                    internal_context.AddNavigationDrawerView(p.Id, cordovaWebView);
+                    p.setTag(cordovaWebView);
+                }
+            }
+
+            /*
             CustomCordovaWebView cordovaWebView = (CustomCordovaWebView) v.findViewById(R.id.cordova_left_item_webview);
             if (cordovaWebView != null) {
-                Log.v(TAG, "LOAD URL:" + p.Id);
+                Log.v(TAG, "LOAD URL FOR:" + p.Id);
+                WebViewInterface webViewInterface = new WebViewInterface(internal_context);
                 cordovaWebView.getSettings().setJavaScriptEnabled(true);
-                cordovaWebView.loadUrl(p.CONTENT);
-                internal_context.AddNavigationDrawerView("CART", cordovaWebView);
+                cordovaWebView.addJavascriptInterface(webViewInterface, "prescription");
+                cordovaWebView.loadUrl(p.Href);
+                internal_context.AddNavigationDrawerView(p.Id, cordovaWebView);
+                p.setTag(cordovaWebView);
             }
+            */
         }
         return v;
 
@@ -53,7 +74,7 @@ public class Adapter extends ArrayAdapter<Item> {
 
     public View getViewById(String Id) {
         int position = 0;
-        for (int i = 0; i < getCount();) {
+        for (int i = 0; i < getCount(); ) {
             if (getItem(i).Id == Id)
                 position = i;
             break;

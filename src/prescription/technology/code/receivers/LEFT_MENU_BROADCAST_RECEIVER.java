@@ -4,37 +4,35 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Gravity;
 import prescription.technology.Index;
-import prescription.technology.code.navigation.drawer.CustomCordovaWebView;
+import prescription.technology.code.webview.CustomCordovaWebView;
 
 /**
  * Created by novac on 07-Aug-14.
  */
 public class LEFT_MENU_BROADCAST_RECEIVER extends BroadcastReceiver {
     private final static String TAG = LEFT_MENU_BROADCAST_RECEIVER.class.getSimpleName();
-    public CustomCordovaWebView cartView;
+    public CustomCordovaWebView webView;
 
     public void onReceive(Context context, Intent intent) {
-        if (intent.hasExtra("ACTION")) {
-            Index activity = (Index) context;
-            cartView = (CustomCordovaWebView) activity.NavigationDrawerViews.get("CART");
+        if (intent.hasExtra("ACTION") && intent.hasExtra("VIEWID")) {
             String action = intent.getStringExtra("ACTION");
             String js_statements = intent.getStringExtra("JS_STATEMENTS");
-            if (cartView != null) {
-                //if (intent.getAction() == "CART") {
-                if (action == "OPENCART") {
-                    activity.mDrawerLayout.openDrawer(Gravity.LEFT);
-                } else {
-					if (js_statements != null)
-						cartView.sendJavascript(js_statements);
-					else {
-						Log.v(TAG, "dispatchEvent " + action);
-						cartView.sendJavascript("document.dispatchEvent(" + action + ")");
-					}
-				}
+            String viewId = intent.getStringExtra("VIEWID");
+            Index activity = (Index) context;
+            webView = (CustomCordovaWebView) activity.NavigationDrawerViews.get(viewId);
+            Log.v(TAG, "js enabled:" + webView.getSettings().getJavaScriptEnabled());
+            if (webView != null) {
+                if (js_statements != null) {
+                    Log.v(TAG, js_statements);
+                    webView.sendJavascript(js_statements);
+                } else { //fire javascript event with supplied name
+                    Log.v(TAG, "dispatchEvent " + action);
+                    //!! javascript events should be defined on root context in order this implementation to work
+                    webView.sendJavascript("document.dispatchEvent(" + action + ")");
+                }
             } else {
-                Log.v(TAG, "cartView is not set");
+                Log.v(TAG, viewId + "is undefined");
             }
 
         }

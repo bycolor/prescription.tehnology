@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
+            <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
+        </div>
+    </div>
+</div>
+<div class="container wrap">
+    <form id="prescription-form" action="http://prescription.technology/ws/prescription.asp" method="post">
+        <input type="hidden" name="action" value="5"/>
+    </form>
+    <div id="messages-placeholder" class="superholder">
+
+        <div id="pending-messages-placeholder">
+            <h1>Pending orders</h1>
+        </div>
+        <div id="archived-messages-placeholder">
+            <h1>Archived orders</h1>
+        </div>
+        <div class="widget-message-block clonable" style="border-top: 1px dashed #ccc;font-size: 15px;">
+            <small>Order:&nbsp;<strong class="autoupdate" data-term="ordernumber"></strong></small>
+            &nbsp;|&nbsp;
+            <small class="doctor-details">Doctor:&nbsp;<strong class="autoupdate"
+                                                               data-term="firstname"></strong>&nbsp;<strong
+                    class="autoupdate" data-term="middleinitial"></strong>&nbsp;<strong class="autoupdate"
+                                                                                        data-term="lastname"></strong>
+            </small>
+            &nbsp;|&nbsp;
+            <div class="message-details">
+                @
+                <small class="message-stamp autoupdate" data-term="lastmessagedate"></small>
+                &nbsp;|&nbsp;
+                <small class="autoupdate" data-term="messageStatus"></small>
+                <br>
+                <a class="message-url" title="View discussion" href="#">
+                    <small>View discussion</small>
+                </a>
+
+                <div class="message-body autoupdate" data-term="mesaj"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        document.addEventListener("deviceready", PowerUp, false);
+        function PowerUp() {
+            var oLocalStorage = new classLocalStorage();
+            var $pagePreloader = $('#page-preloader');
+            var $messagesHolder = $('#messages-placeholder');
+            var prescriptionForm = $('#prescription-form')[0];
+            var $peddingMessagesHolder = $messagesHolder.find('#pending-messages-placeholder');
+            var $archivedMessagesHolder = $messagesHolder.find('#archived-messages-placeholder');
+            $pagePreloader.show();
+            prescriptionForm.autoSubmit(function (messages) {
+                if (typeof messages !== "undefined" && messages.length > 0) {
+                    for (var i = 0; i < messages.length; i++) {
+                        var message = messages[i];
+                        var $clone = $messagesHolder.find('.clonable').clone(true);
+                        oLocalStorage.UpdatePageElements(message, $clone);
+                        oLocalStorage.UpdatePageElements(message.doctor, $clone.find('.doctor-details'));
+                        oLocalStorage.UpdatePageElements(message.message, $clone.find('.message-details'));
+                        $clone.find('a.message-url').prop('href', message.message.mesajURL);
+                        $clone.removeClass('clonable');
+                        console.log()
+                        if (typeof message.message.doctor_approved !== "undefined" && message.message.doctor_approved == "-1")
+                            $peddingMessagesHolder.append($clone);
+                        else
+                            $archivedMessagesHolder.append($clone);                        
+                    }
+                }
+                $pagePreloader.hide();
+            });
+        }
+
+
+
+</script>
+</body>
+</html>

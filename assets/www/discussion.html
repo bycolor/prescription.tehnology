@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
+            <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
+        </div>
+    </div>
+</div>
+<div class="container wrap">
+    <div id="discussion-placeholder" class="superholder">
+        <form id="prescription-form" action="http://prescription.technology/ws/prescription.asp" method="post">
+            <input type="hidden" name="action" value="6"/>
+            <input type="hidden" name="ordernumber"/>
+        </form>
+        <h1>Discussion</h1>
+        Order number:&nbsp;<h2 class="autoupdate" data-term="ordernumber"></h2>
+
+        <div class="messages-placeholder">
+            <div class="message-left message-block clonable" style="border-top: 1px dashed #ccc;font-size: 15px;">
+                <label class="autoupdate" data-term="author"></label>(<span class="autoupdate" data-term="stamp"></span>)
+                <div class="message-body force-wrap autoupdate" data-term="body"></div>
+            </div>
+        </div>
+        <div id="actions">
+            <h5>Post your message</h5>
+
+            <form id="send-message-form" action="http://prescription.technology/ws/prescription.asp" method="post">
+                <input type="hidden" name="action" value="7"/>
+                <input type="hidden" name="ordernumber"/>
+                <textarea class="post-your-message autoclear" name="new_message_body"></textarea>
+
+                <div class="butoane">
+                    <input class="buton critical" value="Send message" type="submit">&nbsp;<img class="ajax-loader"
+                                                                                                src="img/loading.gif"
+                                                                                                alt=""
+                                                                                                style="display: none;">
+                    <label style="float:right; width:auto;"><strong class="success" id="chars-left">2000</strong>
+                        Remaining characters</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="errors-holder"></div>
+    <div id="response-holder"></div>
+</div>
+<script type="text/javascript">
+        document.addEventListener("deviceready", PowerUp, false);
+        function PowerUp() {
+            var oLocalStorage = new classLocalStorage();
+            var $pagePreloader = $('#page-preloader');
+            var $discussionHolder = $('#discussion-placeholder');
+            var $messagesHolder = $discussionHolder.find('.messages-placeholder');
+            var $prescriptionForm = $('#prescription-form');
+            var prescriptionForm = $prescriptionForm[0];
+            var $sendmessageform = $('#send-message-form');
+            var params = getQueryString();
+            var ordernumber = params["ordernumber"];
+            var author = decodeURIComponent(params["author"]);
+            console.log(ordernumber);
+            console.log(author);
+            //var ordernumber = window.location.href.substring(window.location.href.indexOf('?ordernumber=') + 13, window.location.href.length);
+            if (typeof ordernumber !== "undefined") {
+                $discussionHolder.find('input[name=ordernumber]').val(ordernumber); //set order number field
+                prescriptionForm.autoSubmit(function (discussion) {
+                    if (typeof discussion !== "undefined") {
+                        oLocalStorage.UpdatePageElements(discussion, $discussionHolder);
+                        if (typeof discussion.messages !== "undefined" && discussion.messages.length > 0) {
+                            for (var i = 0; i < discussion.messages.length; i++) {
+                                var message = discussion.messages[i];
+                                var $clone = $discussionHolder.find('.clonable').clone(true);
+                                oLocalStorage.UpdatePageElements(message, $clone);
+                                $clone.prop('id', "mesaj-" + message.mesajID);
+                                if (message.citit == "0") {
+                                    $clone.addClass('unread');
+                                }
+                                if (message.senderID === "1") {
+                                    $clone.addClass('message-right');
+                                } else {
+                                    $clone.addClass('message-left');
+                                }
+                                $clone.removeClass('clonable');
+                                $messagesHolder.append($clone);
+                            }
+                        }
+                    }
+                });
+            }
+            $sendmessageform.submit(function (e) {
+                e.preventDefault();
+                this.autoSubmit(function (r) {
+                    if (r.response == "success") {
+                        var $clone = $discussionHolder.find('.clonable').clone(true);
+                        $clone.find('[data-term=author]').text(author.replace('+', ' '));
+                        var now = new Date();
+                        $clone.find('[data-term=stamp]').text(now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());//now.getDay() + "/" + now.getMonth() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());
+                        $clone.find('[data-term=body]').text($sendmessageform.find('[name=new_message_body]').val());
+                        $clone.addClass('message-left');
+                        $clone.removeClass('clonable');
+                        $messagesHolder.append($clone);
+                        $sendmessageform.find('[name=new_message_body]').val('');
+                    }
+                });
+            });
+
+        }
+
+
+
+</script>
+</body>
+</html>

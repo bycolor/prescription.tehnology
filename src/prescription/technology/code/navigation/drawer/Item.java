@@ -5,5 +5,14 @@ package prescription.technology.code.navigation.drawer;
  */
 public class Item {
     public String Id;
-    public String CONTENT;
+    public String Href;
+    private Object Tag;
+
+    public Object getTag() {
+        return Tag;
+    }
+
+    public void setTag(Object tag) {
+        Tag = tag;
+    }
 }

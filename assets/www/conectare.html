@@ -1,140 +1,149 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Prescription Technology</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
-		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/respond.min.js"></script>
-		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="js/custom.jquery.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic" rel="stylesheet" type="text/css" />
-	</head>
-	<body id="conectare">
-		<!-- Preloader -->
-		<div id="page-preloader">
-			<img class="preloader" src="img/loading.gif" alt=""/>
-		</div>
-		
-		<div class="container wrap">
-			<div class="row gutters">
-				<div class="col span_24">
-					<a href="/" id="logo" title="Prescription Technology - Order Form" /><img src="img/logo_PT_big.png" alt="" /></a>
-					<!--<a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu" />Menu</a>-->
-				</div>
-			</div>
-		</div>
+<head>
+    <title>Prescription Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body id="conectare">
+<!-- Preloader -->
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
 
-		<div class="container wrap">
-			<h1>Order Form</h1>
-			<form id="login-form" action="https://prescription.technology/___include/ajax/ajax.app.regcust.asp" method="get" class="row gutters">
-				<input type="hidden" id="m" name="m" value="0" />
-				<input type="hidden" id="j" name="j" value="1" />
-				<input type="text" id="loginemail" name="loginemail" value="" placeholder="Enter your username" />
-				<input type="password" id="loginpassword" name="loginpassword" value="" placeholder="Enter your username" />
-				<button type="submit" class="btn btn-big has-icon" id="login-submit"><div class="btn-text">Sign in</div><div class="btn-icon"><i class="fa fa-angle-double-right"></i></div></button>
-				<div id="response-holder"></div>
-				<div id="response-holder2"></div>
-				<div id="response-holder3"></div>
-				<div id="response-holder-nodata"></div>
-				<div id="response-holder-notlogged" style="display:none;">You are not logged in</div>
-			</form>
-		</div>
-		<script type="text/javascript">
-			var oLocalStorage;
-			oLocalStorage = new classLocalStorage();
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="/" id="logo" title="Prescription Technology - Order Form"/><img src="img/logo_PT_big.png"
+                                                                                     alt=""/></a>
+            <!--<a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu" />Menu</a>-->
+        </div>
+    </div>
+</div>
 
-			function PowerUp() {
-				var $loginForm = $('#login-form');
-				var $loginSubmit = $('#login-submit');
-				var $responseHolder = $('#response-holder');
-				var $responseHolder2 = $('#response-holder2');
-				var $responseHolderNoData = $('#response-holder-nodata');
-				var $responseHolderNotLogged = $('#response-holder-notlogged');
-				var $pagePreloader = $('#page-preloader');
+<div class="container wrap">
+    <h1>Order Form</h1>
 
-				function Login() {
-					$pagePreloader.show();
-					var jqxhr = $.ajax({
-						type: $loginForm.prop('method'),
-						url: $loginForm.prop('action'),
-						//data: params
-						dataType: 'html',
-						data: $loginForm.serialize()
-					}).fail(function(response) {
-						// Failure
-						var json = $.parseJSON(response);
-						var status = json.status;
-						var message = json.message;
+    <form id="login-form" action="https://prescription.technology/ws/prescription.asp" method="post"
+          class="row gutters">
+        <!--<input type="hidden" id="m" name="m" value="0" />
+        <input type="hidden" id="j" name="j" value="1" />-->
+        <input type="hidden" id="action" name="action" value="1"/>
+        <input type="text" id="loginemail" name="loginemail" value="cm.nitu@gmail.com"
+               placeholder="Enter your username"/>
+        <input type="password" id="loginpassword" name="loginpassword" value="12345" placeholder="Enter your password"/>
+        <button type="submit" class="btn btn-big has-icon" id="login-submit">
+            <div class="btn-text">Sign in</div>
+            <div class="btn-icon"><i class="fa fa-angle-double-right"></i></div>
+        </button>
+        <div id="response-holder"></div>
+        <div id="response-holder2"></div>
+        <div id="response-holder3"></div>
+        <div id="response-holder-nodata"></div>
+        <div id="response-holder-notlogged" style="display:none;">You are not logged in</div>
+    </form>
+</div>
+<script type="text/javascript">
+        var oLocalStorage;
+        oLocalStorage = new classLocalStorage();
 
-						var messages = ''
-										+ '<p class="alert error">status: ' + status + '</p>'
-										+ '<p class="alert error">message: ' + message + '</p>'
-										;
-						$responseHolder.append(messages).show();
-						oLocalStorage.ClearSession();
-					}).done(function(response) {
-						// Success
-						try {
-							messages = '';
-							alert(response);
-							var json = $.parseJSON(response);
-							var status = json.status;
-							var message = json.message;
-							if (status == '1') {
-								var user = json.user;
-								var order = json.order;
-								if (oLocalStorage.SetLoggedData(json)) {
-									window.location.href = 'index.html';
-								} else {
-									// Error - Saving local storage data
-									//messages += '<p class="alert error">Could not set local storage data.</p>';
-								}
-								$responseHolder.hide().html(messages).fadeIn('fast');
-							} else {
-								// Error - Credentials error
-								$responseHolder.hide().html('<p class="alert error">' + message + '</p>').fadeIn('fast');
-								oLocalStorage.ClearSession();
-							}
-						} catch (err) {
-							// Error - Misc
-							messages = '<p class="alert error">Call succceeded, but parsing got an error: ' + err.message + '.</p>';
-							$responseHolder.hide().html(messages).fadeIn('fast');
-							$responseHolder2.hide().html('<p class="alert error">response: ' + response + '</p>').fadeIn('fast');
-						}
-						return false;
-					}).always(function() {
-						//alert( "complete" );
-						$pagePreloader.fadeOut();
-					});
-					return false;
-				};
-				
-				$loginForm.on('touchstart click', '#login-submit', function(e){
-					e.preventDefault();
-					Login();
-				}).on('kewdown', '#loginemail, #loginpass', function(e){
-					var code = e.keyCode || e.which;
-					if(code == 13) { //Enter keycode
-						e.preventDefault();
-						Login();
-					}
-				});
-			};
+        function PowerUp() {
+            var $loginForm = $('#login-form');
+            var $loginSubmit = $('#login-submit');
+            var $responseHolder = $('#response-holder');
+            var $responseHolder2 = $('#response-holder2');
+            var $responseHolderNoData = $('#response-holder-nodata');
+            var $responseHolderNotLogged = $('#response-holder-notlogged');
+            var $pagePreloader = $('#page-preloader');
 
-			$(function() {
-				alert(oLocalStorage.logged);
-				if (oLocalStorage.IsLogged) {
-					window.location.href = 'index.html';
-				} else {
-					//console.log(oLocalStorage.logged);
-					PowerUp();
-					//document.addEventListener("deviceready", PowerUp, true);
-				}
-			});
-        </script>
-	</body>
+            function Login() {
+                $pagePreloader.show();
+                var jqxhr = $.ajax({
+                    type: $loginForm.attr('method'),
+                    url: $loginForm.attr('action'),
+                    contentType: "application/x-www-form-urlencoded",
+                    data: $loginForm.serialize()
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    // Failure
+                    //alert(jqXHR.status);
+                    //var json = $.parseJSON(response);
+                    //var status = json.status;
+                    //var message = json.message;
+                    var message = '<p class="alert error">' + jqXHR.responseText + '</p>';
+                    $responseHolder.append(message).show();
+                    //oLocalStorage.ClearSession();
+                }).done(function (response) {
+                    // Success
+                    try {
+                        messages = '';                        
+                        var json = $.parseJSON(response);
+                        var status = json.status;
+                        var message = json.message;
+                        if (status == '1') {                            
+                            prescription.auth().OnLoginCompleted(response);
+                            /*
+                            //var order = json.order;
+                            if (oLocalStorage.SetLoggedData(json)) {
+                                window.location.href = 'index.html';
+                            } else {
+                                // Error - Saving local storage data
+                                //messages += '<p class="alert error">Could not set local storage data.</p>';
+                            }
+                            */
+                            $responseHolder.hide().html(messages).fadeIn('fast');
+                        } else {
+                            // Error - Credentials error
+                            $responseHolder.hide().html('<p class="alert error">' + message + '</p>').fadeIn('fast');
+                            oLocalStorage.ClearSession();
+                        }
+                    } catch (err) {
+                        // Error - Misc
+                        messages = '<p class="alert error">Call succceeded, but parsing got an error: ' + err.message + '.</p>';
+                        $responseHolder.hide().html(messages).fadeIn('fast');
+                        $responseHolder2.hide().html('<p class="alert error">response: ' + response + '</p>').fadeIn('fast');
+                    }
+                    return false;
+                }).always(function () {
+                    //alert( "complete" );
+                    $pagePreloader.fadeOut();
+                });
+                return false;
+            };
+            $loginForm.on('touchstart click', '#login-submit', function (e) {
+                e.preventDefault();                
+                Login();
+            }).on('kewdown', '#loginemail, #loginpass', function (e) {
+                var code = e.keyCode || e.which;
+                if (code == 13) { //Enter keycode
+                    e.preventDefault();
+                    Login();
+                }
+            });
+        };
+
+        //$(function() {
+        //	alert(oLocalStorage.logged);
+        //	if (oLocalStorage.IsLogged) {
+        //		window.location.href = 'index.html';
+        //	} else {
+        //		//console.log(oLocalStorage.logged);
+        //		PowerUp();
+        //		//document.addEventListener("deviceready", PowerUp, true);
+        //	}
+        //});
+        document.addEventListener("deviceready", PowerUp, true);
+
+
+
+</script>
+</body>
 </html>

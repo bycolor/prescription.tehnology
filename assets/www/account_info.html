@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/slidemenu.css" media="screen"/>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
+            <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
+        </div>
+    </div>
+</div>
+
+<div id="holder-account-info" class="col span24">
+    <h1>
+        <span class="autoupdate" data-term="firstname"></span>&nbsp;<span class="autoupdate"
+                                                                          data-term="lastname"></span>
+    </h1>
+
+    <div id="account-info col span24">
+        <div class="col span24">
+            <div class="col span3">
+                <label>Email Address</label>
+            </div>
+            <div class="col span21">
+                <input type="text" class="autoupdate" data-term="username"/>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Password</label>
+            </div>
+            <div class="col span21">
+                <input type="password" class="autoupdate" data-term="password"/>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Confirm Password</label>
+            </div>
+            <div class="col span21">
+                <input type="password" class="autoupdate" data-term="password"/>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>First name</label>
+            </div>
+            <div class="col span21">
+                <input type="text" class="autoupdate" data-term="firstname"/>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Last name</label>
+            </div>
+            <div class="col span21">
+                <input type="text" class="autoupdate" data-term="lastname"/>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Date of birth</label>
+            </div>
+            <div class="col span21 dob">
+                <select class="month autoupdate" data-term="dobmonth"></select>
+                <select class="day autoupdate" data-term="dobday"></select>
+                <input type="text" class="autoupdate" data-term="dobyear"/>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Your height</label>
+            </div>
+            <div class="col span21">
+                <input type="text" class="autoupdate" data-term="heightcm"/>cm
+                <select class="heightfeet autoupdate" data-term="heightfeet">
+                    <option>Ft</option>
+                    <option value="4">4 ft</option>
+                    <option value="5">5 ft</option>
+                    <option value="6">6 ft</option>
+                    <option value="7">7 ft</option>
+                    <option value="8">8 ft</option>
+                </select>&
+                <select class="heightinch autoupdate" data-term="heightinches">
+                    <option value="">In.</option>
+                    <option value="0" selected="selected">0 inches</option>
+                    <option value="1">1 inch</option>
+                    <option value="2">2 inches</option>
+                    <option value="3">3 inches</option>
+                    <option value="4">4 inches</option>
+                    <option value="5">5 inches</option>
+                    <option value="6">6 inches</option>
+                    <option value="7">7 inches</option>
+                    <option value="8">8 inches</option>
+                    <option value="9">9 inches</option>
+                    <option value="10">10 inches</option>
+                    <option value="11">11 inches</option>
+                </select>
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Your weight</label>
+            </div>
+            <div class="col span21">
+                <input type="text" class="autoupdate" data-term="weightkg"/>Kg
+                <input type="text" class="autoupdate" data-term="weightlbs"/>lbs
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Your gender is</label>
+            </div>
+            <div class="col span21">
+                <input type="radio" name="gender" value="M" class="autoupdate" data-term="sex"/>Male
+                <input type="radio" name="gender" value="F" class="autoupdate" data-term="sex"/>Female
+            </div>
+        </div>
+        <div class="col span24 row gutters">
+            <div class="col span3">
+                <label>Age verification</label>
+            </div>
+            <div class="col span21">
+                <input type="text" class="autoupdate" data-term="age"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="patient-consent-holder col span24">
+    <h2>Patient consent</h2>
+
+    <div class="clonable">
+        <div class="col span3">
+            <input type="checkbox"/>YES
+            <input type="checkbox"/>NO
+        </div>
+        <div class="col span21">
+            <a href="#" class="consent-lnk"></a>
+
+            <p class="consent-description"></p>
+
+            <div class="col span24 consent-content"></div>
+        </div>
+    </div>
+</div>
+
+<form id="formInfo" action="" method="post">
+    <input type="hidden" id="action" name="action" value="4"/>
+</form>
+
+<script type="text/javascript">
+        var oLocalStorage;
+        var $holderAccountInfo;
+        var $pagePreloader;
+        function PowerUp() {
+            oLocalStorage = new classLocalStorage();
+            $holderAccountInfo = $('#holder-account-info');
+            $pagePreloader = $('#page-preloader');
+            UpdateInfo();
+        };
+        function UpdateInfo() {
+            $pagePreloader.show();
+            var loggedUser = prescription.auth().getLoggedUser();
+            alert(loggedUser);
+            var $daysDropdown = $holderAccountInfo.find('.day');
+            var $monthsDropDown = $holderAccountInfo.find('.month');
+            bindMonthsAndDays($daysDropdown, $monthsDropDown);
+            if (typeof loggedUser !== "undefined") {
+                $pagePreloader.show();
+                var user = JSON.parse(loggedUser);
+                oLocalStorage.UpdatePageElements(user, $holderAccountInfo);
+                $pagePreloader.hide();
+            }
+            function bindMonthsAndDays($daysDropDown, $monthDropDown) {
+                var months = "";
+                var days = "";
+                for (var i = 1; i <= 31; i++) {
+                    if (i <= 12) {
+                        months += "<option value='" + i + "'>" + i + "</option>";
+                        days += "<option value='" + i + "'>" + i + "</option>";
+                    } else
+                        days += "<option value='" + i + "'>" + i + "</option>";
+                }
+                $daysDropdown.html(days);
+                $monthsDropDown.html(months);
+            }
+        };
+        document.addEventListener("deviceready", PowerUp, true);
+
+
+
+</script>
+
+</body>
+</html>

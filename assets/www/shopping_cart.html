@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/slidemenu.css" media="screen"/>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/custom.jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+</head>
+<body id="shipping-cart">
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="#" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
+            <a href="#" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
+        </div>
+    </div>
+</div>
+<div id="holder-shopping-cart">
+    <h1>
+        Shopping Cart
+    </h1>
+
+    <div></div>
+    <ul id="shopping-cart">
+        <li class="clonable">
+            <div class="row gutters">
+                <span class="col span_4">Item</span>
+                <span class="col span_20 item"><strong class="autoupdate" data-term="productname"></strong></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Item price</span>
+                <span class="col span_20 itemprice autoupdate" data-term="productprice"></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Quantity</span>
+                <span class="col span_20"><select class="quantity"></select></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Subtotal</span>
+                <span class="col span_20 subtotal autoupdate" data-term="productsubtotal"></span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Actions</span>
+                <span class="col span_20"><a href="#" style="color:#ff0000" class="remove-item">Remove</a></span>
+            </div>
+        </li>
+        <li id="total" style="background-color:#005982">
+            <div class="row gutters">
+                <span class="col span_4">Subtotal</span>
+                <span id="sc-subtotoal" class="col span_20 item">&pound;&nbsp;0</span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Physician Review & Consultation, Prescription, Pharmacy: preparation & Handling</span>
+                <span id="rates" class="col span_20 item">&pound;&nbsp;0</span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Shipping:</span>
+                <span id="shipp-rate" class="col span_20 item">&pound;&nbsp;0</span>
+            </div>
+            <div class="row gutters">
+                <span class="col span_4">Total:</span>
+                <span id="total" class="col span_20 item">&pound;&nbsp;0</span>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+        var oLocalStorage;
+        var $shoppingCart;
+        var $totalItem;
+        var $pagePreloader;
+        function PowerUp() {
+            oLocalStorage = new classLocalStorage();
+            $shoppingCart = $('#shopping-cart');
+            $totalItem = $shoppingCart.find('li#total');
+            $pagePreloader = $('#page-preloader');
+            if (!isFromCache()) {
+                UpdateCart();
+            }
+            $('.remove-item').on('click', function (e) {
+                e.preventDefault();
+                if (confirm('Are you sure?')) {
+                    var productid = $(this).data('productid');
+                    prescription.removeFromCart(productid);
+                    $(this).parents('li').remove();
+                }
+            });
+            $(document).on('change', 'select.quantity', function (e) {
+                var $subTotal = $(this).parents('li').find('[data-term=productsubtotal]');
+                alert($subTotal.text().replace('&pound;'));
+            });
+
+        };
+        function UpdateCart() {
+            $pagePreloader.show();
+            //$shoppingCart.emptyClonableHolder();
+            //$shoppingCart.emptyClonableHolder("#no-items");
+            console.log('updatecart event fired'); //debug: show me when this event has been dispatched
+            //get cart content
+            var jcart = prescription.cart().getCartContent();
+            if (typeof jcart !== "undefined") {
+                var cart = JSON.parse(jcart);
+                if (cart.length > 0) {
+                    for (var i = 0; i < cart.length; i++) {
+                        var product = cart[i];
+                        var $clone = $shoppingCart.find('li.clonable').clone(true);
+                        //$clone.prop('id', 'item-' + product.productid);
+                        $clone.find('.remove-item').attr('data-productid', product.productid);
+                        oLocalStorage.UpdatePageElements(product, $clone);
+                        $clone.find("[data-term=productprice]").attr('data-price', product.productprice);
+                        var $quantityDropDown = $clone.find('select.quantity');
+                        for (var j = 1; j <= product.productmaxquantity; j++) {
+                            var $opt = $('<option></option>').val(j).text(j);
+                            $quantityDropDown.append($opt);
+                        }
+                        $clone.removeClass('clonable');
+                        $totalItem.before($clone);
+                    }
+                } else {
+                    //$noItemsItem.css('display', 'block');
+                }
+            } else {
+                //$noItemsItem.css('display', 'block');
+            }
+            $pagePreloader.hide();
+        };
+        var updatecart = document.createEvent('Event');
+        updatecart.initEvent('updatecart', true, true);
+        document.addEventListener("updatecart", UpdateCart, true);
+        document.addEventListener("deviceready", PowerUp, true);
+
+
+
+</script>
+
+</body>
+</html>

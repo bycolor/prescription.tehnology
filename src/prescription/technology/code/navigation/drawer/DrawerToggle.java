@@ -13,11 +13,13 @@ public class DrawerToggle extends ActionBarDrawerToggle {
         super(activity, drawerLayout, drawerImageRes, openDrawerContentDescRes, closeDrawerContentDescRes);
     }
 
+    @Override
     public void onDrawerClosed(View view) {
         super.onDrawerClosed(view);
         //getActionBar().setTitle(mTitle);
     }
 
+    @Override
     public void onDrawerOpened(View drawerView) {
         super.onDrawerOpened(drawerView);
         //getActionBar().setTitle(mDrawerTitle);
