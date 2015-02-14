@@ -23,8 +23,8 @@
             <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
             <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
         </div>
+        </div>
     </div>
-</div>
 
 <div class="container wrap">
     <h1>Index page</h1>
@@ -44,31 +44,33 @@
                             <div class="col span_12">
                                 <p class="autoupdate" data-term="productprice"></p>
                             </div>
-                        </div>
+                            </div>
                         <div class="col span_24">
-                            <a href="#" class="btn btn-big has-icon add-to-cart-btn">Add to cart</a>
-                        </div>
+                            <a href="#" class="btn has-icon add-to-cart-btn"><i
+                                    class="fa fa-cart-plus fa-2x"></i>Add</a>
+                            </div>
                         <hr/>
-                    </div>
+                        </div>
                     <!--<select id="product-list"></select>-->
                 </div>
-                <div class="col span_24">
+                <!--<div class="col span_24">
                     <div class="col span_24">
                         <a id="orders-history" href="orders_history.html" class="btn btn-big has-icon">Orders
                             History</a>
                     </div>
+                    <hr/>
                     <div class="col span_24">
                         <a id="messages" href="messages.html" class="btn btn-big has-icon">Messages</a>
                     </div>
+                </div>-->
                 </div>
-            </div>
         </form>
         <div id="response-holder">
 
         </div>
         <div id="errors-holder"></div>
+        </div>
     </div>
-</div>
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -80,7 +82,7 @@
             var $responseHolder = $('#response-holder');
             var $pagePreloader = $('#page-preloader');
             var $productsForm = $('#products-form');
-            var $productList = $('#product-list');
+            var $productList = $('#products-list');
             var $errorPlaceHolder = $('#errors-holder');
             //console.log(isFromCache());
             prescription.cart().ClearCartContent(); //debug: clear cart content
@@ -94,7 +96,6 @@
                             $clone.attr('id', 'product-' + product.productid);
                             oLocalStorage.UpdatePageElements(product, $clone);
                             var $ebtn = $clone.find('a.add-to-cart-btn');
-
                             $ebtn.attr('data-id', product.productid);
                             $ebtn.attr('data-max', product.productmaxquantity);
                             $ebtn.attr('data-price', product.productprice);
@@ -155,6 +156,7 @@
             });
         };
         document.addEventListener("deviceready", PowerUp, true);
+
 
 
 

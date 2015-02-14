@@ -45,37 +45,12 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: prescription.technology" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="723ce580-1618-4a72-ad27-6eb7e3181100" name="Default" comment=" concurrent unregistering">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/addresses.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/auth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/cart.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/discussion.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/leftMenu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/messages.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/orders_history.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/prefsBase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/shopping_cart.html" />
-      <change type="DELETED" beforePath="E:\Projects\android\prescription.tehnology\assets\www\accountinfo.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\Projects\android\prescription.tehnology\src\prescription\technology\code\PrescriptionTechnologyActivity.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/navigation/drawer/Adapter.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/navigation/drawer/Adapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/Constants.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/navigation/drawer/DrawerToggle.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/navigation/drawer/DrawerToggle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/Index.java" afterPath="$PROJECT_DIR$/src/prescription/technology/Index.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/navigation/drawer/Item.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/navigation/drawer/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/receivers/LEFT_MENU_BROADCAST_RECEIVER.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/receivers/LEFT_MENU_BROADCAST_RECEIVER.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/PrescriptionTechnologyWithNavigationDrawer.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/PrescriptionTechnologyWithNavigationDrawer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/webview/WebViewInterface.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/WebViewInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/conectare.html" afterPath="$PROJECT_DIR$/assets/www/conectare.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/js/custom.jquery.js" afterPath="$PROJECT_DIR$/assets/www/js/custom.jquery.js" />
+    <list default="true" id="723ce580-1618-4a72-ad27-6eb7e3181100" name="Default" comment=" x">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/prescription/technology/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/prescription/technology/BuildConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/index.html" afterPath="$PROJECT_DIR$/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/left_drawer_item.xml" afterPath="$PROJECT_DIR$/res/layout/left_drawer_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/css/slidemenu.css" afterPath="$PROJECT_DIR$/assets/www/css/slidemenu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/leftMenu.html" afterPath="$PROJECT_DIR$/assets/www/leftMenu.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/css/styles.css" afterPath="$PROJECT_DIR$/assets/www/css/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Projects\android\prescription.tehnology\assets\www\customeraddress.html" afterPath="$PROJECT_DIR$/assets/www/addresses.html" />
-      <change type="MOVED" beforePath="E:\Projects\android\prescription.tehnology\assets\www\slidemenu.html" afterPath="$PROJECT_DIR$/assets/www/account_info.html" />
-      <change type="MOVED" beforePath="E:\Projects\android\prescription.tehnology\src\prescription\technology\code\navigation\drawer\CustomCordovaWebView.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java" />
     </list>
     <ignored path="Prescription.technology.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -140,102 +115,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PrescriptionTechnologyWithNavigationDrawer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/PrescriptionTechnologyWithNavigationDrawer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
-              <caret line="128" column="60" selection-start-line="128" selection-start-column="60" selection-end-line="128" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conectare.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/conectare.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="302" max-vertical-offset="1620">
-              <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomCordovaWebView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="900">
-              <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
-              <folding>
-                <element signature="method#backHistory#0;class#CustomCordovaWebView#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/prescription/technology/Index.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="310" max-vertical-offset="2025">
-              <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#onCreateOptionsMenu#0;class#Index#0" expanded="true" />
-                <element signature="method#GetBroadcastsMap#0;class#Index#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/messages.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="1020">
-              <caret line="58" column="10" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
-              <folding>
-                <element signature="n#head#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#link#4;n#head#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="13" max-vertical-offset="480">
-              <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-              <folding>
-                <element signature="n#ListView#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leftMenu.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/www/leftMenu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="300">
-              <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
-              <folding>
-                <element signature="e#3873#5194#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44833624" vertical-offset="1739" max-vertical-offset="2490">
-              <caret line="133" column="46" selection-start-line="133" selection-start-column="46" selection-end-line="133" selection-end-column="46" />
+            <state vertical-scroll-proportion="-9.666667" vertical-offset="1148" max-vertical-offset="2520">
+              <caret line="92" column="47" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#link#4;n#head#0;n#html#0;n#!!top" expanded="true" />
@@ -253,11 +137,19 @@
                 <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#a#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomCordovaWebView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.7985075" vertical-offset="0" max-vertical-offset="900">
+              <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
+              <folding>
+                <element signature="method#backHistory#0;class#CustomCordovaWebView#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -351,8 +243,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -499,7 +391,7 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="avd2" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../doctors.prescription.technology" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SmsActivity" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -922,7 +814,19 @@
       <option name="project" value="LOCAL" />
       <updated>1409756526016</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary=" x">
+      <created>1423666386483</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1423666386483</updated>
+    </task>
+    <task id="LOCAL-00038" summary=" x">
+      <created>1423667421949</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1423667421949</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -952,31 +856,31 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47933885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47351524" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49421486" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26324505" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21395706" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26324236" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40449437" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3325967" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43017656" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17927383" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17927383" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49421486" sideWeight="0.61349696" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.52487963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52561986" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52561986" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47438017" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21395706" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40552485" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52561986" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1045,7 +949,8 @@
     <MESSAGE value="onDrawerAction event" />
     <MESSAGE value="change drawer width" />
     <MESSAGE value=" concurrent unregistering" />
-    <option name="LAST_COMMIT_MESSAGE" value=" concurrent unregistering" />
+    <MESSAGE value=" x" />
+    <option name="LAST_COMMIT_MESSAGE" value=" x" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1350,8 +1255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/conectare.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="302" max-vertical-offset="1620">
-          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2310">
+          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1377,18 +1282,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/messages.html">
+    <entry file="file://F:/kits/developer-software/Android/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-19/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="1020">
-          <caret line="58" column="10" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="25084" max-vertical-offset="48210">
+          <caret line="7233" column="0" selection-start-line="7233" selection-start-column="0" selection-end-line="7233" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/leftMenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.516129" vertical-offset="342" max-vertical-offset="2475">
+          <caret line="106" column="31" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#link#4;n#head#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#link#5;n#head#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1398,43 +1308,25 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="13" max-vertical-offset="480">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <element signature="n#ListView#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.21238938" vertical-offset="0" max-vertical-offset="565">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/messages.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08056042" vertical-offset="149" max-vertical-offset="720">
+          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/prescription/technology/Index.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="310" max-vertical-offset="2055">
-          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onCreateOptionsMenu#0;class#Index#0" expanded="true" />
-            <element signature="method#GetBroadcastsMap#0;class#Index#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://F:/kits/developer-software/Android/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-19/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="25084" max-vertical-offset="48210">
-          <caret line="7233" column="0" selection-start-line="7233" selection-start-column="0" selection-end-line="7233" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#addChildrenForAccessibility#0;class#View#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="900">
-          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
-          <folding>
-            <element signature="method#backHistory#0;class#CustomCordovaWebView#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.15126051" vertical-offset="0" max-vertical-offset="595">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1446,20 +1338,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/leftMenu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="300">
-          <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
-          <folding>
-            <element signature="e#3873#5194#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44833624" vertical-offset="1739" max-vertical-offset="2490">
-          <caret line="133" column="46" selection-start-line="133" selection-start-column="46" selection-end-line="133" selection-end-column="46" />
+        <state vertical-scroll-proportion="-9.666667" vertical-offset="1148" max-vertical-offset="2520">
+          <caret line="92" column="47" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#link#4;n#head#0;n#html#0;n#!!top" expanded="true" />
@@ -1477,11 +1359,17 @@
             <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#a#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.7985075" vertical-offset="0" max-vertical-offset="900">
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
+          <folding>
+            <element signature="method#backHistory#0;class#CustomCordovaWebView#0" expanded="true" />
           </folding>
         </state>
       </provider>
