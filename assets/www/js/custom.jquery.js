@@ -197,7 +197,7 @@ function onDeviceReady() {
         this.logged = 0;
         if (typeof window.localStorage.getItem("logged") == 'undefined') { return true } else { return false };
     };
-    classLocalStorage.prototype.UpdatePageElements = function (_this, $domTree) {
+    classLocalStorage.prototype.UpdatePageElements = function (_this, $domTree, append) {
         if (typeof _this == 'undefined') {
             var _this = this;
         };
@@ -210,9 +210,12 @@ function onDeviceReady() {
             //alert(_this[$this.data('term')]);
             //$this.hide();
             if ($this.is('input') || $this.is('select') || $this.is('textarea')) {
-                $this.val(_this[$this.data('term')]);
+                if (typeof append !== "undefined" && append == true) $this.val($this.val() + _this[$this.data('term')]);
+                else $this.val(_this[$this.data('term')]);
+
             } else {
-                $this.html(_this[$this.data('term')]);
+                if (typeof append !== "undefined" && append == true) $this.html($this.html() + _this[$this.data('term')]);
+                else $this.html(_this[$this.data('term')]);
             }
             //$this.show();
 

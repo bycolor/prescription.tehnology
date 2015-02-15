@@ -7,21 +7,18 @@ import android.util.Log;
 import android.webkit.JavascriptInterface;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import prescription.technology.code.handlers.ClientRequest;
+import prescription.technology.code.handlers.HandlerContexts;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-//import org.json.XML;
-
-//import org.json.XML;
-
 /**
  * Created by novac on 07-Aug-14.
  */
 public class WebViewInterface extends prefsBase {
-    public final String UPDATECARTACTION = "1";
     private final String TAG = WebViewInterface.class.getSimpleName();
 
     public WebViewInterface(Context context) {
@@ -45,21 +42,19 @@ public class WebViewInterface extends prefsBase {
 
     @JavascriptInterface
     public void sendMessage(final String action, String viewId) {
-        Intent i = new Intent("LEFT_MENU_BROADCAST_RECEIVER");
+        Intent i = new Intent("MESSAGE");
         i.putExtra("ACTION", action);
         i.putExtra("VIEWID", viewId);
-        _context.sendBroadcast(i);
-        Log.v(TAG, "BROADCAST:" + action + " HAS BEEN SENT");
+        ClientRequest.getInstance(_context).handle(i, HandlerContexts.leftwebview);
     }
 
     @JavascriptInterface
     public void sendMessage(@NotNull String action, @NotNull String viewId, @Nullable String js) {
-        Intent i = new Intent("LEFT_MENU_BROADCAST_RECEIVER");
+        Intent i = new Intent("MESSAGE");
         i.putExtra("ACTION", action);
         i.putExtra("VIEWID", viewId);
         i.putExtra("JS_STATEMENTS", js);
-        _context.sendBroadcast(i);
-        Log.v(TAG, "BROADCAST:" + action + " HAS BEEN SENT");
+        ClientRequest.getInstance(_context).handle(i, HandlerContexts.leftwebview);
     }
 
     @JavascriptInterface
@@ -69,8 +64,7 @@ public class WebViewInterface extends prefsBase {
             i.putExtra(action, "1");
         else
             i.putExtra(action, "0");
-        _context.sendBroadcast(i);
-        Log.v(TAG, "BROADCAST:" + action + " HAS BEEN SENT");
+        ClientRequest.getInstance(_context).handle(i, HandlerContexts.leftwebview);
     }
 
 
@@ -78,7 +72,7 @@ public class WebViewInterface extends prefsBase {
     public void loadUrlIntoMainWebView(String page) {
         Intent i = new Intent("LoadURLEventHandler");
         i.putExtra("page", page);
-        _context.sendBroadcast(i);
+        ClientRequest.getInstance(_context).handle(i, HandlerContexts.mainwebview);
     }
 
     @JavascriptInterface

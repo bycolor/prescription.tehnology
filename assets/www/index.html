@@ -27,42 +27,37 @@
     </div>
 
 <div class="container wrap">
-    <h1>Index page</h1>
-
     <div class="col span_24">
         <form id="products-form" class="hide" action="https://prescription.technology/ws/prescription.asp"
               method="post">
             <input type="hidden" id="action" name="action" value="2"/>
 
             <div class="row gutters">
-                <div id="products-list" class="col span_24">
-                    <div class="clonable">
-                        <div class="col span_24">
-                            <div class="col span_12">
+                <table id="products-list" class="prezentare auto">
+                    <colgroup>
+                        <col width="60%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <tr class="clonable">
+                        <td class="out">
                                 <p class="autoupdate" data-term="productname"></p>
-                            </div>
-                            <div class="col span_12">
-                                <p class="autoupdate" data-term="productprice"></p>
-                            </div>
-                            </div>
-                        <div class="col span_24">
-                            <a href="#" class="btn has-icon add-to-cart-btn"><i
-                                    class="fa fa-cart-plus fa-2x"></i>Add</a>
-                            </div>
-                        <hr/>
-                        </div>
+                        </td>
+                        <td class="out">
+                            <p class="autoupdate" data-term="productprice">&pound;</p>
+                        </td>
+                        <td>
+                            <a href="#" class="btn has-icon add-to-cart-btn"><i class="fa fa-plus-circle"></i></a>
+                        </td>
+                    </tr>
                     <!--<select id="product-list"></select>-->
-                </div>
-                <!--<div class="col span_24">
-                    <div class="col span_24">
-                        <a id="orders-history" href="orders_history.html" class="btn btn-big has-icon">Orders
-                            History</a>
+                </table>
+                <div class="col span_24">
+                        <div class="col span_24">
+                            <a id="patientconsent" href="patientconsent.html" class="btn btn-big has-icon">Procced to
+                                patient consent</a>
+                        </div>
                     </div>
-                    <hr/>
-                    <div class="col span_24">
-                        <a id="messages" href="messages.html" class="btn btn-big has-icon">Messages</a>
-                    </div>
-                </div>-->
                 </div>
         </form>
         <div id="response-holder">
@@ -85,7 +80,7 @@
             var $productList = $('#products-list');
             var $errorPlaceHolder = $('#errors-holder');
             //console.log(isFromCache());
-            prescription.cart().ClearCartContent(); //debug: clear cart content
+            //prescription.cart().ClearCartContent(); //debug: clear cart content
             if (!isFromCache()) {
                 $pagePreloader.show();
                 $productsForm[0].autoSubmit(function (products) {
@@ -94,10 +89,11 @@
                             var product = products[i];
                             var $clone = $productList.find('.clonable').clone();
                             $clone.attr('id', 'product-' + product.productid);
-                            oLocalStorage.UpdatePageElements(product, $clone);
+                            oLocalStorage.UpdatePageElements(product, $clone, true);
                             var $ebtn = $clone.find('a.add-to-cart-btn');
                             $ebtn.attr('data-id', product.productid);
                             $ebtn.attr('data-max', product.productmaxquantity);
+                            $ebtn.attr('data-name', product.productname);
                             $ebtn.attr('data-price', product.productprice);
                             $clone.removeClass('clonable');
                             $productList.append($clone);
@@ -118,10 +114,12 @@
             }
             $(document).on('click', '.add-to-cart-btn', function (e) {
                 e.preventDefault();
-                var pid = $(this).data('id');
+                var $this = $(this);
+                var pid = $this.data('id');
+                var maxqt = $this.data('max');
                 var $pholder = $('#product-' + pid);
-                var name = $pholder.find('[data-term=productname]').text();
-                var price = $pholder.find('[data-term=productprice]').text();
+                var name = $this.data('name');
+                var price = $this.data('price');
                 var obj = {
                     productid: pid,
                     productname: name,
@@ -133,29 +131,22 @@
                 prescription.cart().addToCart(str);
                 prescription.sendMessage(static.updateCartEventName, static.left_menu_view_Id);
                 prescription.OnDrawerAction("open");
-                /*
-                var $selectedProduct = $productList.find(':selected');
-                if (typeof $selectedProduct !== "undefined") {
-                    var price = typeof $selectedProduct.data('price') !== "undefined" ? $selectedProduct.data('price') : 0;
-                    var maxqt = typeof $selectedProduct.data('max') !== "undefined" ? $selectedProduct.data('max') : 1;
-                    var obj = {
-                        productid: $selectedProduct.val(),
-                        productname: $selectedProduct.text(),
-                        productprice: "&pound; " + price,
-                        productmaxquantity: maxqt,
-                        productsubtotal: "&pound; " + price
-                    };
-                    var str = JSON.stringify(obj);
-                    prescription.cart().addToCart(str);
-                    prescription.sendMessage(static.updateCartEventName, static.left_menu_view_Id);
-                    prescription.OnDrawerAction("open");
-                } else {
-                    $errorPlaceHolder.addErrorMessage("Please select at least one product!");
-                }
-                */
+            });
+            $('#patientconsent').on('click', function (e) {
+                e.preventDefault();
+                var jcart = prescription.cart().getCartContent();
+                if (typeof jcart !== "undefined") {
+                    var cart = JSON.parse(jcart);
+                    if (cart.length == 0) {
+                        $errorPlaceHolder.html('<p class="alert error">Add at least one product to your shopping cart</p>');
+                    } else
+                        window.location.href = $(this).attr("href");
+                } else
+                    $errorPlaceHolder.html('<p class="alert error">Add at least one product to your shopping cart</p>');
             });
         };
         document.addEventListener("deviceready", PowerUp, true);
+
 
 
 

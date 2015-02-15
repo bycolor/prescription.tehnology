@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Prescription Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/responsive.gs.24col.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic"
+          rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+</head>
+<body id="patientconsent">
+<!-- Preloader -->
+<div id="page-preloader">
+    <img class="preloader" src="img/loading.gif" alt=""/>
+</div>
+
+<div class="container wrap">
+    <div class="row gutters">
+        <div class="col span_24">
+            <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
+            <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
+        </div>
+    </div>
+</div>
+<div class="container wrap">
+    <h1>Patient Consent</h1>
+
+    <p class="warning"><strong>Important!</strong><br> To continue, you must agree with the below Patient Responsibility
+        Statement and Informed Consent. &nbsp;Click each link to view the documents</p>
+
+    <table class="prezentare auto">
+        <colgroup>
+            <col width="80%">
+            <col width="20%">
+        </colgroup>
+        <tbody>
+        <tr>
+            <td class="out">
+                <a href="patient_responsibility.asp" class="fancybox article-form"
+                   title="The Patient Responsibility Statement">Click Here for The Patient Responsibility
+                    Statement</a><br>I Have Read, Understand and Agree
+            </td>
+            <td data-title="I Have Read, Understand and Agree">
+                <p class="noedit">
+                    <label for="optResponsibility-y"><input class="required radio" type="checkbox"
+                                                            value="Yes-Patient Responsibility Statement"
+                                                            name="optResponsibility" id="optResponsibility-y">
+                        Yes</label>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="out">
+                <a href="informed_consent.asp" class="fancybox article-form"
+                   title="Click Here for The Informed Consent">Click Here for The Informed Consent</a>
+                <br>I Have Read, Understand and Agree
+            </td>
+            <td data-title="I Have Read, Understand and Agree">
+                <p class="noedit">
+                    <label for="optConsent-y"><input class="required radio" type="checkbox" value="Yes-Informed Consent"
+                                                     name="optConsent" id="optConsent-y"> Yes</label>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="out">
+                <a href="privacy.asp" class="fancybox article-form"
+                   title="Click Here for our Notice of Privacy Practices">Click Here for our Notice of Privacy
+                    Practices</a>
+                <br>Je reconnais d'avoir reçu les Notes sur les Pratiques Confidentiels.
+            </td>
+            <td class="mobile-min-height h60"
+                data-title="Je reconnais d'avoir reçu les Notes sur les Pratiques Confidentiels.">
+                <p class="noedit">
+                    <label for="optPrivacy-y"><input class="required radio" type="checkbox"
+                                                     value="Yes-Privacy Statement" name="optPrivacy" id="optPrivacy-y">
+                        Yes</label>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="out">
+                <a href="guide_to_personal_in.asp" class="fancybox article-form"
+                   title="Click Here for a guide to the use of your personal information by ourselves and at Credit Reference and Fraud Prevention Agencies">Click
+                    Here for a guide to the use of your personal information by ourselves and at Credit Reference and
+                    Fraud Prevention Agencies</a>
+                <br>I Have Read, Understand and Agree
+            </td>
+            <td class="mobile-min-height h60"
+                data-title="A guide to the use of your personal information by ourselves and at Credit Reference and Fraud Prevention Agencies">
+                <p class="noedit">
+                    <label for="optGuide-y"><input class="required radio" type="checkbox" value="Yes-Privacy Statement"
+                                                   name="optGuide" id="optGuide-y"> Yes</label>
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="out">
+                <p>I would like to receive promotional e-mail from Partner Pharmacy with information about health tips,
+                    new site features and special product promotions</p>
+            </td>
+            <td class="mobile-min-height h130"
+                data-title="I would like to receive promotional e-mail from Partner Pharmacy with information about health tips, new site features and special product promotions">
+                <p class="noedit">
+                    <label for="optPromos-y"><input class="required radio" type="radio" checked="checked"
+                                                    value="Yes-promotional e-mail" name="optPromos" id="optPromos-y">
+                        Yes</label>
+                    <label for="optPromos-n"><input class="radio" type="radio" value="N-promotional e-mail"
+                                                    name="optPromos" id="optPromos-n"> No</label>
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+<script type="text/javascript" src="js/custom.jquery.js"></script>
+<script type="text/javascript">
+        function PowerUp() {
+
+        }
+        document.addEventListener("deviceready", PowerUp, true);
+
+</script>
+</body>
+</html>

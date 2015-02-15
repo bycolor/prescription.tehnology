@@ -2,9 +2,7 @@ package prescription.technology.code;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -13,13 +11,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.*;
+import android.view.Display;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ListView;
 import org.apache.cordova.Config;
 import org.apache.cordova.api.CordovaInterface;
 import org.apache.cordova.api.CordovaPlugin;
 import prescription.technology.R;
+import prescription.technology.code.handlers.ConfigHandlers;
 import prescription.technology.code.navigation.drawer.Adapter;
 import prescription.technology.code.navigation.drawer.DrawerToggle;
 import prescription.technology.code.navigation.drawer.Item;
@@ -44,7 +45,8 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
     //<editor-fold desc="Fields"
     public HashMap<String, View> NavigationDrawerViews = new HashMap<String, View>();
     public DrawerLayout mDrawerLayout;
-    protected CustomCordovaWebView appView;
+    public CustomCordovaWebView appView;
+    public CustomCordovaWebView leftView;
     protected ListView mDrawerList;
     boolean activityResultKeepRunning;
     boolean keepRunning;
@@ -61,8 +63,9 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
         setContentView(R.layout.activity_main);
         appView = (CustomCordovaWebView) findViewById(R.id.cordova_main_webview);
         Config.init(this);
+        ConfigHandlers.RegisterHandlers(this);//register client request handlers
         appView.getSettings().setJavaScriptEnabled(true);
-        WebViewInterface webViewInterface = new WebViewInterface(this.getApplicationContext());
+        WebViewInterface webViewInterface = new WebViewInterface(this);
         appView.addJavascriptInterface(webViewInterface, "prescription");
         appView.requestFocus();
         appView.setOnTouchListener(new View.OnTouchListener() {
@@ -124,6 +127,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
     }
 
 
+    /*
     //for on-screen keyboard
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
@@ -149,7 +153,7 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
         }
         return super.onKeyDown(keyCode, keyEvent);
     }
-
+    */
     @Override
     protected void onResume() {
         super.onResume();
@@ -277,10 +281,10 @@ public abstract class PrescriptionTechnologyWithNavigationDrawer extends Activit
     //<editor-fold desc="Protected">
     protected void PopulateLeftMenu() {
         List<Item> items = new ArrayList<Item>();
-        Item account = new Item();
-        account.Id = "left_menu";
-        account.Href = Constants.assets.leftMenu;
-        items.add(account);
+        Item left = new Item();
+        left.Id = "left_menu";
+        left.Href = Constants.assets.leftMenu;
+        items.add(left);
         mDrawerList.setAdapter(new Adapter(this,
                 R.layout.left_drawer_item, items));
     }
