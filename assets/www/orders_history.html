@@ -17,34 +17,47 @@
 <body>
 <div id="page-preloader">
     <img class="preloader" src="img/loading.gif" alt=""/>
-</div>
+    </div>
 <div class="container wrap">
     <div class="row gutters">
         <div class="col span_24">
             <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
             <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
         </div>
+        </div>
     </div>
-</div>
 <div class="container wrap">
     <form id="prescription-form" action="http://prescription.technology/ws/prescription.asp" method="post">
         <input type="hidden" name="action" value="4"/>
     </form>
-    <div id="orders-history-placeholder" class="superholder">
-        <div class="clonable">
-            <p class="autoupdate" data-term="ordernumber"></p>
+    <table id="orders-history-placeholder" class="prezentare auto">
+        <thead>
+        <tr>
+            <th>Order number<br/>Order status date</th>
+            <th>Order status</th>
+            <th>Med name</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="clonable">
+            <td>
+                <p class="autoupdate" data-term="ordernumber"></p>
 
-            <p class="autoupdate" data-term="status"></p>
-
-            <p class="autoupdate" data-term="orderstatusdate"></p>
-
-            <p class="autoupdate" data-term="medname"></p>
-
-            <p class="autoupdate" data-term="quantity"></p>
-
-            <p class="autoupdate" data-term="total"></p>
-        </div>
-    </div>
+                <p class="autoupdate" data-term="orderstatusdate"></p>
+            </td>
+            <td>
+                <p class="autoupdate" data-term="status"></p>
+            </td>
+            <td>
+                <p class="autoupdate" data-term="medname"></p>
+            </td>
+            <td>
+                <p class="autoupdate" data-term="total">&pound;</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <script type="text/javascript">
         document.addEventListener("deviceready", PowerUp, false);
@@ -59,14 +72,15 @@
                     for (var i = 0; i < orders.length; i++) {
                         var order = orders[i];
                         var $clone = $ordersHolder.find('.clonable').clone(true);
-                        oLocalStorage.UpdatePageElements(order, $clone);
+                        oLocalStorage.UpdatePageElements(order, $clone, true);
                         $clone.removeClass('clonable');
                         $ordersHolder.append($clone);
                     }
                 }
-                $pagePreloader.hide();
+                //$pagePreloader.hide();
             });
         }
+
 
 
 </script>

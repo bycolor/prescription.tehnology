@@ -1,15 +1,9 @@
 package prescription.technology.code.webview;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import org.apache.cordova.CordovaWebView;
-import prescription.technology.Index;
-import prescription.technology.code.Constants;
 
 /**
  * Created by novac on 04-Aug-14.
@@ -50,6 +44,7 @@ public class CustomCordovaWebView extends CordovaWebView {
         this.loadUrl(CurrentPage + "#fromCache=true");
     }
 
+    /*
     @Override
     public boolean backHistory() {
         //Log.v(TAG, this.getUrl());
@@ -82,5 +77,6 @@ public class CustomCordovaWebView extends CordovaWebView {
         }
         return super.onKeyDown(keyCode, keyEvent);
     }
+    */
 
 }

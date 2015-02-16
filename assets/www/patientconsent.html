@@ -23,13 +23,15 @@
             <a href="/" id="logo" title="Prescription Technology - Order Form"><img src="img/logo_PT.png" alt=""/></a>
             <a href="/" id="nav-toggle" title="Prescription Technology - Order Form Menu">Menu</a>
         </div>
+        </div>
     </div>
-</div>
 <div class="container wrap">
     <h1>Patient Consent</h1>
 
-    <p class="warning"><strong>Important!</strong><br> To continue, you must agree with the below Patient Responsibility
-        Statement and Informed Consent. &nbsp;Click each link to view the documents</p>
+    <p class="warning">
+        <strong>Important!</strong><br> To continue, you must agree with the below Patient Responsibility
+        Statement and Informed Consent. &nbsp;Click each link to view the documents
+    </p>
 
     <table class="prezentare auto">
         <colgroup>
@@ -40,15 +42,19 @@
         <tr>
             <td class="out">
                 <a href="patient_responsibility.asp" class="fancybox article-form"
-                   title="The Patient Responsibility Statement">Click Here for The Patient Responsibility
-                    Statement</a><br>I Have Read, Understand and Agree
+                   title="The Patient Responsibility Statement">
+                    Click Here for The Patient Responsibility
+                    Statement
+                </a><br>I Have Read, Understand and Agree
             </td>
             <td data-title="I Have Read, Understand and Agree">
                 <p class="noedit">
-                    <label for="optResponsibility-y"><input class="required radio" type="checkbox"
-                                                            value="Yes-Patient Responsibility Statement"
-                                                            name="optResponsibility" id="optResponsibility-y">
-                        Yes</label>
+                    <label for="optResponsibility-y">
+                        <input class="required radio" type="checkbox"
+                               value="Yes-Patient Responsibility Statement"
+                               name="optResponsibility" id="optResponsibility-y">
+                        Yes
+                    </label>
                 </p>
             </td>
         </tr>
@@ -60,62 +66,83 @@
             </td>
             <td data-title="I Have Read, Understand and Agree">
                 <p class="noedit">
-                    <label for="optConsent-y"><input class="required radio" type="checkbox" value="Yes-Informed Consent"
-                                                     name="optConsent" id="optConsent-y"> Yes</label>
+                    <label for="optConsent-y">
+                        <input class="required radio" type="checkbox" value="Yes-Informed Consent"
+                               name="optConsent" id="optConsent-y"> Yes
+                    </label>
                 </p>
             </td>
         </tr>
         <tr>
             <td class="out">
                 <a href="privacy.asp" class="fancybox article-form"
-                   title="Click Here for our Notice of Privacy Practices">Click Here for our Notice of Privacy
-                    Practices</a>
+                   title="Click Here for our Notice of Privacy Practices">
+                    Click Here for our Notice of Privacy
+                    Practices
+                </a>
                 <br>Je reconnais d'avoir reçu les Notes sur les Pratiques Confidentiels.
             </td>
             <td class="mobile-min-height h60"
                 data-title="Je reconnais d'avoir reçu les Notes sur les Pratiques Confidentiels.">
                 <p class="noedit">
-                    <label for="optPrivacy-y"><input class="required radio" type="checkbox"
-                                                     value="Yes-Privacy Statement" name="optPrivacy" id="optPrivacy-y">
-                        Yes</label>
+                    <label for="optPrivacy-y">
+                        <input class="required radio" type="checkbox"
+                               value="Yes-Privacy Statement" name="optPrivacy" id="optPrivacy-y">
+                        Yes
+                    </label>
                 </p>
             </td>
         </tr>
         <tr>
             <td class="out">
                 <a href="guide_to_personal_in.asp" class="fancybox article-form"
-                   title="Click Here for a guide to the use of your personal information by ourselves and at Credit Reference and Fraud Prevention Agencies">Click
+                   title="Click Here for a guide to the use of your personal information by ourselves and at Credit Reference and Fraud Prevention Agencies">
+                    Click
                     Here for a guide to the use of your personal information by ourselves and at Credit Reference and
-                    Fraud Prevention Agencies</a>
+                    Fraud Prevention Agencies
+                </a>
                 <br>I Have Read, Understand and Agree
             </td>
             <td class="mobile-min-height h60"
                 data-title="A guide to the use of your personal information by ourselves and at Credit Reference and Fraud Prevention Agencies">
                 <p class="noedit">
-                    <label for="optGuide-y"><input class="required radio" type="checkbox" value="Yes-Privacy Statement"
-                                                   name="optGuide" id="optGuide-y"> Yes</label>
+                    <label for="optGuide-y">
+                        <input class="required radio" type="checkbox" value="Yes-Privacy Statement"
+                               name="optGuide" id="optGuide-y"> Yes
+                    </label>
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="out">
-                <p>I would like to receive promotional e-mail from Partner Pharmacy with information about health tips,
-                    new site features and special product promotions</p>
+                <p>
+                    I would like to receive promotional e-mail from Partner Pharmacy with information about health tips,
+                    new site features and special product promotions
+                </p>
             </td>
             <td class="mobile-min-height h130"
                 data-title="I would like to receive promotional e-mail from Partner Pharmacy with information about health tips, new site features and special product promotions">
                 <p class="noedit">
-                    <label for="optPromos-y"><input class="required radio" type="radio" checked="checked"
-                                                    value="Yes-promotional e-mail" name="optPromos" id="optPromos-y">
-                        Yes</label>
-                    <label for="optPromos-n"><input class="radio" type="radio" value="N-promotional e-mail"
-                                                    name="optPromos" id="optPromos-n"> No</label>
+                    <label for="optPromos-y">
+                        <input class="required radio" type="radio" checked="checked"
+                               value="Yes-promotional e-mail" name="optPromos" id="optPromos-y">
+                        Yes
+                    </label>
+                    <label for="optPromos-n">
+                        <input class="radio" type="radio" value="N-promotional e-mail"
+                               name="optPromos" id="optPromos-n"> No
+                    </label>
                 </p>
             </td>
         </tr>
         </tbody>
     </table>
+    <div class="col span_24">
+        <a id="medicalquestions" href="questions.html" class="btn btn-big has-icon">
+            Procced to medical questions
+        </a>
+    </div>
 </div>
 
 <script type="text/javascript" src="cordova.js"></script>
@@ -126,6 +153,7 @@
 
         }
         document.addEventListener("deviceready", PowerUp, true);
+
 
 </script>
 </body>
