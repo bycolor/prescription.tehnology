@@ -45,12 +45,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: prescription.technology" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="723ce580-1618-4a72-ad27-6eb7e3181100" name="Default" comment="redesign client requests and product list">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java" afterPath="$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/account_info.html" afterPath="$PROJECT_DIR$/assets/www/account_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/index.html" afterPath="$PROJECT_DIR$/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/orders_history.html" afterPath="$PROJECT_DIR$/assets/www/orders_history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/patientconsent.html" afterPath="$PROJECT_DIR$/assets/www/patientconsent.html" />
+    <list default="true" id="723ce580-1618-4a72-ad27-6eb7e3181100" name="Default" comment="add jq validation scripts">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/js/additional-methods.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/www/js/jquery.validate.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prescription.technology.iws" />
@@ -143,8 +140,8 @@
       <file leaf-file-name="CustomCordovaWebView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36393443" vertical-offset="69" max-vertical-offset="960">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.7081967" vertical-offset="69" max-vertical-offset="960">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -949,7 +946,13 @@
       <option name="project" value="LOCAL" />
       <updated>1424031250208</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="add jq validation scripts">
+      <created>1424093179401</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1424093179401</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1049,7 +1052,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="first commit" />
     <MESSAGE value="All files commit" />
     <MESSAGE value="alert aaa" />
     <MESSAGE value="delete alert aaa" />
@@ -1074,7 +1076,8 @@
     <MESSAGE value=" concurrent unregistering" />
     <MESSAGE value=" x" />
     <MESSAGE value="redesign client requests and product list" />
-    <option name="LAST_COMMIT_MESSAGE" value="redesign client requests and product list" />
+    <MESSAGE value="add jq validation scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="add jq validation scripts" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1084,7 +1087,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java</url>
-          <line>73</line>
+          <line>67</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
@@ -1433,6 +1436,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33870968" vertical-offset="120" max-vertical-offset="1680">
           <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#link#4;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#colgroup#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#tr#1;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#tr#2;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#1;n#tr#2;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#tr#3;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#0;n#tr#3;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#1;n#tr#3;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#tr#4;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#0;n#tr#4;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#td#1;n#tr#4;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1500,15 +1535,15 @@
         <state vertical-scroll-proportion="0.36777583" vertical-offset="0" max-vertical-offset="571">
           <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/prescription/technology/code/webview/CustomCordovaWebView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36393443" vertical-offset="69" max-vertical-offset="960">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.7081967" vertical-offset="69" max-vertical-offset="960">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
